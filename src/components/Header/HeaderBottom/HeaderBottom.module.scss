@@ -1,0 +1,109 @@
+.headerBottom {
+  display: flex;
+  align-items: center;
+  height: 107px;
+  justify-content: space-between;
+
+  &__line {
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 49px;
+  }
+
+  .leftBlock {
+    display: flex;
+
+    &__catalog {
+      margin-right: 15px;
+    }
+
+    &__search {
+      width: 263px;
+    }
+
+    &__searchButton {
+      padding: 10px;
+      background-color: var(--button-bg-color);
+      border-radius: 50%;
+    }
+  }
+
+  .rightBlock {
+    display: flex;
+    align-items: center;
+
+    &__priceList {
+      padding-left: 43px!important;
+      padding-right: 43px!important;
+    }
+
+    &__contacts {
+      display: flex;
+      align-items: center;
+    }
+
+    &__info {
+      margin-right: 14px;
+      text-align: right;
+
+      &_phoneNumber {
+        font-weight: 600;
+        color: var(--main-text-color);
+      }
+
+      &_workingHours {
+        font-size: 12px;
+        color: var(--sub-text-color);
+        margin-top: 5px;
+      }
+
+      &_call {
+        font-size: 10px;
+        margin-top: 5px;
+        color: var(--sub-text-color);
+        text-decoration: underline;
+      }
+    }
+
+    &__price {
+      &_title {
+        font-weight: 300;
+        color: var(--sub-text-color);
+        font-size: 12px;
+      }
+
+      &_subTitle {
+        font-weight: 600;
+        margin-top: 5px;
+      }
+    }
+
+    &__basket {
+      display: flex;
+      align-items: center;
+
+      &__basketIcon {
+        position: relative;
+        margin-right: 24px;
+      }
+      &_counter {
+        position: absolute;
+        top: -5px;
+        right: 0;
+        transform: translateX(50%) ;
+        border: 3px solid #fff;
+        box-sizing: content-box;
+        background-color: var(--counter-bg-color);
+        color: var(--counter-text-color);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+    }
+  }
+
+}

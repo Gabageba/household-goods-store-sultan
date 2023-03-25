@@ -1,0 +1,10 @@
+.button, button {
+  padding: 21px 54px;
+  background-color: var(--button-bg-color);
+  border-radius: 79px;
+  color:var(--button-text-color);
+
+  span {
+    margin-right: 12px;
+  }
+}
