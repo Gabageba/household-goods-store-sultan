@@ -1,0 +1,102 @@
+@use "src/sass/abstracts/functions";
+
+.headerMain {
+  display: flex;
+  align-items: center;
+  height: 107px;
+  justify-content: space-between;
+
+  @media (max-width: 992px) {
+    display: grid;
+    height: auto;
+    justify-items: center;
+    grid-template-rows: 107px 61px;
+
+    grid-template-areas:
+    'burgerMenu sultanLogo basket'
+    'buttons buttons buttons';
+  }
+
+  &__info {
+
+  }
+
+  @media (max-width: 767px) {
+    grid-template-rows: 61px 40px;
+  }
+
+  &__sultanLogo {
+    grid-area: sultanLogo;
+    @media (max-width: 767px) {
+      width: 97px;
+    }
+  }
+
+  &__burgerMenuButton {
+    background-color: var(--button-bg-color);
+    border-radius: 50%;
+    width: 58px;
+    height: 58px;
+    display: none;
+
+    @media (max-width: 992px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-area: burgerMenu;
+    }
+
+    @media (max-width: 767px) {
+      width: 32px;
+      height: 32px;
+
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  &__line {
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 49px;
+
+    @media (max-width: 1200px) {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+}
+
+.underline {
+  display: none;
+  width: 100vw;
+  opacity: 0.1 !important;
+  //transform: translateX(-29%);
+  @media (max-width: 992px) {
+    display: block;
+    position: absolute;
+  }
+
+  &_top {
+    top: 107px;
+
+    @media (max-width: 767px) {
+      top: 61px;
+    }
+  }
+
+  &_bottom {
+    top: 168px;
+
+    @media (max-width: 767px) {
+      top: 101px;
+    }
+  }
+}
+

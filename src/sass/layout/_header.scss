@@ -2,3 +2,8 @@
   border-left: 1px dashed #000;
   opacity: 0.05;
 }
+
+.underline {
+  border-bottom: 1px solid var(--line-color);
+  opacity: 0.2;
+}

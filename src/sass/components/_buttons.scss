@@ -3,6 +3,12 @@
   background-color: var(--button-bg-color);
   border-radius: 79px;
   color:var(--button-text-color);
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 1200px) {
+    padding: 21px 34px;
+  }
 
   span {
     margin-right: 12px;

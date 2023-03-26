@@ -1,7 +1,21 @@
 .header {
+  position: relative;
 
   &__underLine {
-    border-bottom: 1px solid var(--line-color);
-    opacity: 0.2;
+    @media (max-width: 992px) {
+      display: none;
+    }
   }
+}
+
+.background {
+  position: absolute;
+  background-color: #111111;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: 1;
+
 }

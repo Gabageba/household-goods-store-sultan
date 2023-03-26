@@ -1,0 +1,135 @@
+@use "src/sass/abstracts/functions";
+
+.subBlock {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  @media (max-width: 992px) {
+    grid-area: basket;
+  }
+
+  &__priceList {
+    padding-left: 43px;
+    padding-right: 43px;
+    @media (max-width: 992px) {
+      display: none !important;
+    }
+
+    @media (max-width: 1200px) {
+      padding-left: 34px;
+      padding-right: 34px;
+      //display: none;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    align-items: center;
+    @media (max-width: 1370px) {
+      display: none;
+    }
+  }
+
+  &__info {
+    margin-right: 14px;
+    text-align: right;
+
+
+    &_phoneNumber {
+      font-weight: 600;
+      color: var(--main-text-color);
+    }
+
+    &_workingHours {
+      font-size: functions.toRem(12);
+      color: var(--sub-text-color);
+      margin-top: 5px;
+    }
+
+    &_call {
+      font-size: functions.toRem(10);
+      margin-top: 5px;
+      color: var(--sub-text-color);
+      text-decoration: underline;
+    }
+  }
+
+  &__price {
+    @media (max-width: 767px) {
+      display: none;
+    }
+
+    &_title {
+      font-weight: 300;
+      color: var(--sub-text-color);
+      font-size: functions.toRem(12);
+    }
+
+    &_subTitle {
+      font-weight: 600;
+      margin-top: 5px;
+    }
+  }
+
+  &__line {
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 49px;
+
+    @media (max-width: 1200px) {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+
+  &__basket {
+    display: flex;
+    align-items: center;
+
+    &__basketIcon {
+      position: relative;
+      margin-right: 24px;
+
+      @media (max-width: 767px) {
+        margin-right: 7px;
+      }
+
+      img {
+        @media (max-width: 767px) {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+
+    &_counter {
+      position: absolute;
+      top: -5px;
+      right: 0;
+      transform: translateX(50%);
+      border: 3px solid #fff;
+      box-sizing: content-box;
+      background-color: var(--counter-bg-color);
+      color: var(--counter-text-color);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+
+      @media (max-width: 767px) {
+        width: 17px;
+        height: 17px;
+        top: -7px;
+        font-size: functions.toRem(10);
+      }
+    }
+  }
+}

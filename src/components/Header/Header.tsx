@@ -1,16 +1,28 @@
-import React from 'react'
+import React, {FC, useState} from 'react'
 import styles from './Header.module.scss'
-import HeaderTop from './HeaderTop/HeaderTop'
-import HeaderBottom from './HeaderBottom/HeaderBottom'
+import HeaderAbout from './HeaderAbout/HeaderAbout'
+import HeaderMain from './HeaderMain/HeaderMain'
 
-const Header = () => {
+
+const Header: FC = () => {
+  const [isBurgerActive, setIsBurgerActive] = useState<boolean>(false)
+
+  const burgerMenuClickHandler = () => {
+    setIsBurgerActive(prevState => !prevState)
+  }
+
   return (
-    <header className={styles.header}>
-      <HeaderTop/>
-      <div className={styles.header__underLine}></div>
-      <HeaderBottom/>
-      <div className={styles.header__underLine}></div>
-    </header>
+    <>
+      <header className={styles.header}>
+        <HeaderAbout isBurgerActive={isBurgerActive}/>
+        <div className={`underline ${styles.header__underLine}`}></div>
+        <HeaderMain burgerMenuClickHandler={burgerMenuClickHandler} isBurgerActive={isBurgerActive}/>
+        <div className={`underline ${styles.header__underLine}`}></div>
+      </header>
+      {/*{isBurgerActive && <div className={styles.background}></div>}*/}
+
+    </>
+
   )
 }
 

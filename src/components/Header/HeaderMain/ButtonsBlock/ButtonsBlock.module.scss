@@ -1,0 +1,129 @@
+
+.buttonsBlock {
+  display: flex;
+  position: relative;
+  justify-items: center;
+  align-items: center;
+  height: 59px;
+
+  @media (max-width: 992px) {
+    grid-area: buttons;
+    width: 100%;
+  }
+
+  &__line {
+    display: none;
+    height: 39px;
+
+    @media (max-width: 992px) {
+      display: block;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @media (max-width: 992px) {
+      width: auto;
+      display: grid;
+      grid-template-areas: 'icon text';
+      grid-gap: 10px;
+      align-items: center;
+
+      span {
+        grid-area: text;
+        font-weight: 600;
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__catalog {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 992px) {
+      width: 50%;
+      background-color: transparent !important;
+      color: var(--sub-text-color) !important;
+      padding: 0 !important;
+      margin-right: 0;
+
+      span {
+        grid-area: text;
+        font-weight: 600;
+      }
+    }
+
+    svg {
+      width: 15px;
+      @media (max-width: 992px) {
+        grid-area: icon;
+        justify-content: right;
+        path {
+          stroke: var(--sub-text-color);
+        }
+      }
+    }
+
+  }
+
+  &__search {
+    width: 263px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 992px) {
+      width: 50%;
+      background-color: transparent !important;
+      padding: 0 !important;
+    }
+
+    input {
+      @media (max-width: 992px) {
+        display: none ;
+      }
+    }
+  }
+
+  &__searchText {
+    display: none;
+    font-weight: 600;
+
+    @media (max-width: 992px) {
+      display: block;
+      grid-area: text;
+    }
+  }
+
+  &__searchButton {
+    padding: 10px;
+    width: 19px;
+    height: 19px;
+    box-sizing: content-box;
+    background-color: var(--button-bg-color);
+    border-radius: 50%;
+
+    @media (max-width: 992px) {
+      background-color: transparent;
+      padding: 0;
+    }
+
+    svg {
+      width: 19px;
+      height: 19px;
+
+      @media (max-width: 992px) {
+        grid-area: icon;
+        path {
+          stroke: var(--sub-text-color);
+        }
+      }
+    }
+  }
+}
