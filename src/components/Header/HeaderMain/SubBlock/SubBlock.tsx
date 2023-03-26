@@ -3,8 +3,12 @@ import styles from './SubBlock.module.scss'
 import callCenter from '../../../../assets/img/call-center.png'
 import download from '../../../../assets/icons/download.svg'
 import basket from '../../../../assets/icons/basket.svg'
+import {useNavigate} from 'react-router-dom'
+import {BASKET_ROUTE} from '../../../../utils/consts'
 
 const SubBlock: FC = () => {
+  const navigate = useNavigate()
+
   return (
     <div className={styles.subBlock}>
       <div className={styles.subBlock__contacts}>
@@ -21,7 +25,7 @@ const SubBlock: FC = () => {
         <img width={17} src={download} alt="download"/>
       </div>
       <div className={`dashedLineVert ${styles.subBlock__line}`}></div>
-      <div className={styles.subBlock__basket}>
+      <div className={styles.subBlock__basket} onClick={() => navigate(BASKET_ROUTE)}>
         <div className={styles.subBlock__basket__basketIcon}>
           <img src={basket} alt="basket"/>
           <div className={styles.subBlock__basket_counter}>3</div>

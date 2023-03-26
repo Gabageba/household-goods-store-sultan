@@ -1,10 +1,11 @@
 import React, {FC} from 'react'
+import ContentWrapper from '../../components/ContentWrapper/ContentWrapper'
 
 const Catalog: FC = () => {
   return (
-    <div>
-
-    </div>
+    <ContentWrapper>
+      Catalog
+    </ContentWrapper>
   )
 }
 

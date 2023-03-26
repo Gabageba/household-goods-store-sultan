@@ -1,11 +1,15 @@
 import React, {FC} from 'react'
 import styles from './ButtonsBlock.module.scss'
 import {CatalogSvg, SearchSvg} from '../../../svg'
+import {useNavigate} from 'react-router-dom'
+import {CATALOG_ROUTE} from '../../../../utils/consts'
 
 const ButtonsBlock: FC = () => {
+  const navigate = useNavigate()
+
   return (
     <div className={styles.buttonsBlock}>
-      <div className={`button ${styles.buttonsBlock__catalog}`}>
+      <div className={`button ${styles.buttonsBlock__catalog}`} onClick={() => navigate(CATALOG_ROUTE)}>
         <div className={styles.buttonsBlock__content}>
           <span>Каталог</span>
           <CatalogSvg/>

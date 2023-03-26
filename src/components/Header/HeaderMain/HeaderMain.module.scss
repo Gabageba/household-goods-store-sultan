@@ -27,6 +27,8 @@
 
   &__sultanLogo {
     grid-area: sultanLogo;
+    cursor: pointer;
+
     @media (max-width: 767px) {
       width: 97px;
     }
@@ -38,6 +40,7 @@
     width: 58px;
     height: 58px;
     display: none;
+    cursor: pointer;
 
     @media (max-width: 992px) {
       display: flex;

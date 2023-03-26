@@ -48,19 +48,22 @@
   }
 
   li {
+    cursor: pointer;
+
     @media (max-width: 992px) {
       margin-bottom: 20px;
     }
   }
 
   &__priceList {
-    display: none;
+    display: none!important;
     width: 100%;
     margin-top: 2px;
     margin-bottom: 20px;
     justify-content: center;
+
     @media (max-width: 992px) {
-      display: flex;
+      display: flex !important;
     }
   }
 }
