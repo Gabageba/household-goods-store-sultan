@@ -10,15 +10,18 @@ interface HeaderAboutProps {
 
 const HeaderAbout: FC<HeaderAboutProps> = ({isBurgerActive}) => {
   return (
-    <div className={`${styles.headerAbout} ${isBurgerActive ? styles.headerAbout_active : ''}`}>
-      <ContentWrapper>
-        <div className={styles.headerAbout__wrapper}>
-          <Contacts/>
-          <div className={styles.headerAbout__dashedUnderline}></div>
-          <List />
-        </div>
-      </ContentWrapper>
+    <div className={`${styles.background} ${isBurgerActive ? styles.background__active : ''}`}>
+      <div className={styles.headerAbout}>
+        <ContentWrapper>
+          <div className={styles.headerAbout__content}>
+            <Contacts />
+            <div className={styles.headerAbout__dashedUnderline}></div>
+            <List />
+          </div>
+        </ContentWrapper>
+      </div>
     </div>
+
   )
 }
 

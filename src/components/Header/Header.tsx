@@ -1,8 +1,12 @@
-import React, {FC, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import styles from './Header.module.scss'
 import HeaderAbout from './HeaderAbout/HeaderAbout'
 import HeaderMain from './HeaderMain/HeaderMain'
 
+enum overflowVariant {
+  hidden = 'hidden',
+  auto = 'auto'
+}
 
 const Header: FC = () => {
   const [isBurgerActive, setIsBurgerActive] = useState<boolean>(false)
@@ -10,6 +14,22 @@ const Header: FC = () => {
   const burgerMenuClickHandler = () => {
     setIsBurgerActive(prevState => !prevState)
   }
+
+  const setBodyOverflow = (value: overflowVariant): void => {
+    const bodyStyles = document.querySelector('body')?.style
+    if (bodyStyles) {
+      bodyStyles.overflow = value
+    }
+  }
+
+  useEffect(() => {
+    if (isBurgerActive) {
+      setBodyOverflow(overflowVariant.hidden)
+    } else {
+      setBodyOverflow(overflowVariant.auto)
+    }
+  }, [isBurgerActive])
+
 
   return (
     <>

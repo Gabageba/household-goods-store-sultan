@@ -1,0 +1,15 @@
+.typeFilter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+
+  &__card {
+    text-align: center;
+    padding: 18px 16px;
+    box-shadow: 0 15px 70px -11px rgba(43, 28, 1, 0.04);
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--sub-text-color)
+  }
+}

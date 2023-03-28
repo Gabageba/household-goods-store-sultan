@@ -1,0 +1,21 @@
+.price {
+  margin-bottom: 30px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    line-height: 150%;
+
+    div {
+      font-weight: 300;
+      margin-right: 5px;
+      color: var(--sub-text-color)
+    }
+
+    span {
+      font-weight: 500;
+      color: var(--main-text-color)
+    }
+  }
+}
+

@@ -1,14 +1,16 @@
-
-
 .headerAbout {
+  background-color: var(--bg-color);
 
-  height: 100%;
-  @media (max-width: 992px) {
-    display: none;
-  }
+  &__content {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    height: 61px;
 
-  &_active {
-    display: block;
+    @media (max-width: 992px) {
+      height: 100%;
+      flex-direction: column;
+    }
   }
 
   &__dashedUnderline {
@@ -21,40 +23,22 @@
 
     @media (max-width: 992px) {
       display: block;
-      width: 720px;
-    }
-
-    @media (max-width: 767px) {
-      width: 100% !important;
-    }
-
-  }
-
-  &__wrapper {
-    height: 61px;
-    display: flex;
-    justify-content: space-between;
-    z-index: 9;
-    background-color: var(--bg-color);
-
-    @media (max-width: 992px) {
-      margin-top: 1px;
-      top: 100%;
-      height: 100%;
-      //display: none;
-      position: absolute;
-      flex-direction: column;
-      align-items: flex-start;
-      //overflow-x: hidden;
-      padding-top: 20px;
-      padding-bottom: 32px;
-      z-index: 10;
-    }
-
-    @media (max-width: 767px) {
-      display: block;
-      width: calc(100% - 30px);
     }
   }
+}
 
+
+.background {
+  @media (max-width: 992px) {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    top: 100%;
+    display: none;
+  }
+
+  &__active {
+    display: block;
+  }
 }

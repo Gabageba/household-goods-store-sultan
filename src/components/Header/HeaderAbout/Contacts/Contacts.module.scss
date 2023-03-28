@@ -3,6 +3,7 @@
 .contacts {
   display: flex;
   align-items: center;
+  background-color: var(--bg-color);
 
   @media (max-width: 992px) {
     flex-direction: column;

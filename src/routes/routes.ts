@@ -1,6 +1,6 @@
 import {FC} from 'react'
-import {BASKET_ROUTE, CATALOG_ROUTE} from '../utils/consts'
-import Catalog from '../pages/Catalog/Catalog'
+import {BASKET_ROUTE, COSMETICS_HYGIENE_ROUTE} from '../utils/consts'
+import CosmeticsHygiene from '../pages/CosmeticsHygiene/CosmeticsHygiene'
 import Basket from '../pages/Basket/Basket'
 
 interface Routes {
@@ -10,8 +10,8 @@ interface Routes {
 
 export const publicRoutes: Routes[] = [
   {
-    path: CATALOG_ROUTE,
-    Element: Catalog
+    path: COSMETICS_HYGIENE_ROUTE,
+    Element: CosmeticsHygiene
   },
   {
     path: BASKET_ROUTE,

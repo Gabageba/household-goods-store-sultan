@@ -1,0 +1,47 @@
+@use "src/sass/abstracts/functions";
+
+.sort {
+  display: flex;
+  font-size: functions.toRem(16);
+  line-height: 150%;
+
+  &__header {
+    font-weight: 500;
+    margin-right: 5px;
+    color: var(--main-text-color);
+  }
+
+  &__chooseSortType {
+    position: relative;
+    width: 115px;
+  }
+
+  &__currentSortType {
+    display: flex;
+    align-items: center;
+
+    &_active {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    span {
+      margin-right: 5px;
+      cursor: pointer;
+    }
+  }
+}
+
+.dropDown {
+  display: none;
+  position: absolute;
+  top: -300%;
+  &__item {
+    cursor: pointer;
+  }
+
+  &_active {
+    display: block;
+  }
+}

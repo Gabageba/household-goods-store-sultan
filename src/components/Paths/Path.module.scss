@@ -1,0 +1,26 @@
+.path {
+  display: flex;
+  align-items: center;
+  margin-top: 44px;
+  margin-bottom: 50px;
+
+  &__line {
+    height: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    color: var(--sub-text-color);
+    font-weight: 300;
+  }
+
+  &__currentLink {
+    opacity: 0.5;
+  }
+}
