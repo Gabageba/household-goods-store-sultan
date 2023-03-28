@@ -1,5 +1,8 @@
+@use "src/sass/abstracts/functions";
+
 .price {
   margin-bottom: 30px;
+  width: 240px;
 
   .title {
     display: flex;
@@ -15,6 +18,29 @@
     span {
       font-weight: 500;
       color: var(--main-text-color)
+    }
+  }
+
+  &__range {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 16px;
+
+    span {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    &_input {
+      background: var(--price-range-input-color);
+      width: 50%;
+      padding: 4px;
+      text-align: center;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 15px;
+      border-radius: 1000px;
     }
   }
 }

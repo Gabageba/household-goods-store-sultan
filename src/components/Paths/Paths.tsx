@@ -15,7 +15,7 @@ const Paths: FC<PathProps> = ({paths}) => {
       {
         paths
           ? paths.map((path, id) =>
-            <div className={styles.path__block}>
+            <div className={styles.path__block} key={id}>
               <div className={`dashedLineVert ${styles.path__line}`}></div>
               <Link to={path.link} className={`${styles.path__link} ${id === paths.length - 1 && styles.path__currentLink}`}>{path.name}</Link>
             </div>

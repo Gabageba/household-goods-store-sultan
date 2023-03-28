@@ -8,10 +8,10 @@ interface TypeFilterProps {
 const TypeFilter: FC<TypeFilterProps> = ({types}) => {
   return (
     <div className={styles.typeFilter}>
-      {types.map(type => {
+      {types.map((type, id) => {
         const typeArr = type.split(' ')
         return (
-          <div className={styles.typeFilter__card}>
+          <div className={styles.typeFilter__card} key={id}>
             {typeArr[0]}
             <br/>
             {typeArr.slice(1).join(' ')}

@@ -27,7 +27,7 @@ const SubBlock: FC = () => {
       <div className={`dashedLineVert ${styles.subBlock__line}`}></div>
       <div className={styles.subBlock__basket} onClick={() => navigate(BASKET_ROUTE)}>
         <div className={styles.subBlock__basket__basketIcon}>
-          <img src={basket} alt="basket"/>
+          <img width={46} src={basket} alt="basket"/>
           <div className={styles.subBlock__basket_counter}>3</div>
         </div>
         <div className={styles.subBlock__price}>

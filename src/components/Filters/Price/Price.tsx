@@ -8,10 +8,10 @@ const Price = () => {
         <div>Цена</div>
         <span>₸</span>
       </div>
-      <div>
-        <input value={0}/>
+      <div className={styles.price__range}>
+        <input type={'number'} className={styles.price__range_input} value={0}/>
         <span>-</span>
-        <input value={10000}/>
+        <input type={'number'} className={styles.price__range_input} value={10000}/>
       </div>
     </div>
   )

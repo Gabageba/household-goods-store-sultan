@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styles from './Sort.module.scss'
 import {SORT_TYPES} from '../../utils/consts'
-import {DropDownIcon} from '../svg'
+import {MoreIcon} from '../svg'
 
 const Sort = () => {
   const [isDropDownActive, setIsDropDownActive] = useState<boolean>(false)
@@ -9,7 +9,7 @@ const Sort = () => {
 
   const getSortTypeName = (id: string): string => {
     let name = ''
-    SORT_TYPES.map(type => {
+    SORT_TYPES.forEach(type => {
       if (type.id === id) {
         name = type.name
       }
@@ -28,13 +28,13 @@ const Sort = () => {
       <div className={styles.sort__chooseSortType}>
         <div className={`${styles.sort__currentSortType} ${isDropDownActive ? styles.sort__currentSortType_active : ''}`} onClick={() => setIsDropDownActive(prevState => !prevState)}>
           <span>{getSortTypeName(currentSort)}</span>
-          <DropDownIcon/>
+          <MoreIcon/>
         </div>
         <div className={`${styles.dropDown} ${isDropDownActive ? styles.dropDown_active : ''}`}>
           {
             SORT_TYPES.map(type => {
               return type.id !== currentSort &&
-                <div className={styles.dropDown__item} onClick={() => handleDropDownItemClick(type.id)}>{type.name}</div>
+                <div className={styles.dropDown__item} key={type.id} onClick={() => handleDropDownItemClick(type.id)}>{type.name}</div>
             })
           }
         </div>

@@ -39,8 +39,6 @@ const Header: FC = () => {
         <HeaderMain burgerMenuClickHandler={burgerMenuClickHandler} isBurgerActive={isBurgerActive}/>
         <div className={`underline ${styles.header__underLine}`}></div>
       </header>
-      {/*{isBurgerActive && <div className={styles.background}></div>}*/}
-
     </>
 
   )

@@ -1,9 +1,9 @@
-import {ISortType} from '../types/sort'
+import {ISort} from '../types/filter'
 
 export const COSMETICS_HYGIENE_ROUTE = '/cosmeticsHygiene'
 export const BASKET_ROUTE = '/basket'
 
-export const SORT_TYPES: ISortType[] = [
+export const SORT_TYPES: ISort[] = [
   {
     id: 'name',
     name: 'Название'

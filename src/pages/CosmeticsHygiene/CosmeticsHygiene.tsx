@@ -18,13 +18,13 @@ const CosmeticsHygiene = () => {
 
   return (
     <ContentWrapper>
-      {/*<Paths paths={paths}/>*/}
-      {/*<div className={styles.cosmeticsHygiene}>*/}
-      {/*  <h1>Косметика и гигиена</h1>*/}
-      {/*  <Sort />*/}
-      {/*</div>*/}
-      {/*<TypeFilter types={COSMETICS_HYGIENE_TYPES} />*/}
-      {/*<Catalog />*/}
+      <Paths paths={paths}/>
+      <div className={styles.cosmeticsHygiene}>
+        <h1>Косметика и гигиена</h1>
+        <Sort />
+      </div>
+      <TypeFilter types={COSMETICS_HYGIENE_TYPES} />
+      <Catalog />
     </ContentWrapper>
   )
 }
