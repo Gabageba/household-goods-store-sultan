@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper'
 import Paths from '../../components/Paths/Paths'
 import {COSMETICS_HYGIENE_ROUTE, COSMETICS_HYGIENE_TYPES} from '../../utils/consts'
@@ -7,14 +7,20 @@ import Sort from '../../components/Sort/Sort'
 import styles from './CosmeticsHygiene.module.scss'
 import TypeFilter from '../../components/TypeFilter/TypeFilter'
 import Catalog from '../../components/Catalog/Catalog'
+import {useActions} from '../../hooks/useActions'
 
 const CosmeticsHygiene = () => {
+  const {fetchProducts} = useActions()
   const paths: IPaths[] = [
     {
       name: 'Косметика и гигиена',
       link: COSMETICS_HYGIENE_ROUTE
     }
   ]
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
 
   return (
     <ContentWrapper>

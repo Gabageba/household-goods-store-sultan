@@ -11,3 +11,21 @@
     margin-bottom: 10px;
   }
 }
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+
+  .button__show {
+    padding: 21px 51px;
+  }
+
+  .button__clear {
+    background-color: var(--button-bg-color);
+    border-radius: 50%;
+    padding: 17px;
+    cursor: pointer;
+  }
+}

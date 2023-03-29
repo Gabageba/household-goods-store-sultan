@@ -4,78 +4,24 @@ import Search from '../Search/Search'
 import CustomCheckbox from '../customCheckbox/CustomCheckbox'
 import {IManufacturer} from '../../types/filter'
 import {MoreIcon} from '../svg'
+import {IProductTypes} from '../../types/products'
 
 interface FilterWithCheckboxProps {
-  title: string
+  title: string,
+  types: IProductTypes[]
 }
 
-const FilterWithCheckbox: FC<FilterWithCheckboxProps> = ({title}) => {
-  const points: IManufacturer[] = [
-    {
-      name: 'Grifon',
-      count: 56
-    },
-    {
-      name: 'Boyscout',
-      count: 66
-    },
-    {
-      name: 'Paclan',
-      count: 166
-    },
-    {
-      name: 'Булгари Грин',
-      count: 21
-    },
-    {
-      name: 'Grifon',
-      count: 56
-    },
-    {
-      name: 'Grifon',
-      count: 56
-    },
-  ]
+const FilterWithCheckbox: FC<FilterWithCheckboxProps> = ({title, types}) => {
   const [manufacturers, setManufacturers] = useState<IManufacturer[]>([])
   const [isShowMore, setIsShoreMore] = useState<boolean>(false)
 
   useEffect(() => {
-    const points: IManufacturer[] = [
-      {
-        name: 'Grifon',
-        count: 56
-      },
-      {
-        name: 'Boyscout',
-        count: 66
-      },
-      {
-        name: 'Paclan',
-        count: 166
-      },
-      {
-        name: 'Булгари Грин',
-        count: 21
-      },
-      {
-        name: 'Grifon',
-        count: 56
-      },
-      {
-        name: 'Grifon',
-        count: 56
-      },
-    ]
-    setManufacturers(points.slice(0, 4))
-  }, [])
-
-  useEffect(() => {
     if (isShowMore) {
-      setManufacturers(points)
+      setManufacturers(types)
     } else {
-      setManufacturers(points.slice(0, 4))
+      setManufacturers(types.slice(0, 4))
     }
-  }, [isShowMore])
+  }, [isShowMore, types])
 
   return (
     <>
@@ -86,13 +32,13 @@ const FilterWithCheckbox: FC<FilterWithCheckboxProps> = ({title}) => {
           <Search/>
           <div className={styles.filterWithCheckbox__points}>
             {
-              manufacturers.map(manufacturer =>
-                <CustomCheckbox name={manufacturer.name} count={manufacturer.count}/>
+              manufacturers.map((manufacturer, index) =>
+                <CustomCheckbox key={index} name={manufacturer.name} count={manufacturer.count}/>
               )
             }
           </div>
           {
-            points.length > 4 &&
+            types.length > 4 &&
             <div className={`${styles.showMore} ${isShowMore ? styles.showMore_active : ''}`} onClick={() => setIsShoreMore(prevState => !prevState)}>
               <span>{isShowMore ? 'Скрыть все' : 'Показать все'}</span>
               <MoreIcon/>

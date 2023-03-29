@@ -35,3 +35,5 @@ export const COSMETICS_HYGIENE_TYPES = [
   'Гигиена полости рта',
   'Бумажная продукция',
 ]
+
+export const PRODUCTS_LOCAL_STORAGE = 'Products'

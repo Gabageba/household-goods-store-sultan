@@ -2,12 +2,12 @@
   background-color: var(--bg-color);
 
   &__content {
-    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     height: 61px;
 
     @media (max-width: 992px) {
+      margin-top: 20px;
       height: 100%;
       flex-direction: column;
     }
