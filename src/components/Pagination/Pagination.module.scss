@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+
+  &__page {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    line-height: 130%;
+    color: var(--sub-text-color);
+    border-radius: 50%;
+    cursor: pointer;
+
+    &_active {
+      background: var(--price-range-input-color);
+    }
+  }
+
+  &__arrow {
+    &_left {
+      margin-right: 35px;
+      cursor: pointer;
+    }
+
+    &_right {
+      margin-left: 35px;
+      transform: rotate(180deg);
+      cursor: pointer;
+    }
+  }
+}

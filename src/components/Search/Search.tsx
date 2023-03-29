@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Search.module.scss'
-import {SearchSvg} from '../svg'
+import {SearchIcon} from '../svg'
 
 const Search = () => {
   return (
@@ -8,7 +8,7 @@ const Search = () => {
       <div className={styles.search__content}>
         <input type="text" placeholder={'Поиск...'}/>
         <div className={styles.search__button}>
-          <SearchSvg/>
+          <SearchIcon/>
         </div>
         <div className={styles.search__text}>Поиск</div>
       </div>

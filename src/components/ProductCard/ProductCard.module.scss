@@ -1,0 +1,95 @@
+@use "src/sass/abstracts/functions";
+
+.productCard {
+  width: 326px;
+  box-shadow: var(--product-card-box-shadow);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__size {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 8px;
+      height: 15px;
+    }
+
+    span {
+      font-weight: 400;
+      font-size: functions.toRem(12);
+      line-height: 130%;
+      color: var(--sub-text-color);
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--main-text-color);
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.subInfo {
+  font-weight: 300;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+  line-height: 150%;
+
+  &__title {
+    color: var(--sub-text-color);
+    font-weight: 300;
+    margin-right: 5px;
+  }
+
+  &__info {
+    font-weight: 500;
+    color: var(--main-text-color);
+  }
+}
+
+.buyBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  &__price {
+    font-weight: 800;
+    font-size: functions.toRem(16);
+    line-height: 130%;
+  }
+
+  &__button {
+    padding: 9px 25px;
+
+   span {
+     font-weight: 700;
+     font-size: functions.toRem(10);
+     line-height: 12px;
+     letter-spacing: 2.5px;
+     text-transform: uppercase;
+   }
+
+    svg {
+      width: 27px;
+      height: 27px;
+
+      path {
+        fill: white;
+      }
+    }
+  }
+}

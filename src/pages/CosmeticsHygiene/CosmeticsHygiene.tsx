@@ -8,9 +8,12 @@ import styles from './CosmeticsHygiene.module.scss'
 import TypeFilter from '../../components/TypeFilter/TypeFilter'
 import Catalog from '../../components/Catalog/Catalog'
 import {useActions} from '../../hooks/useActions'
+import {useTypedSelector} from '../../hooks/useTypedSelector'
 
 const CosmeticsHygiene = () => {
   const {fetchProducts} = useActions()
+  const {page, limit} = useTypedSelector(state => state.products)
+
   const paths: IPaths[] = [
     {
       name: 'Косметика и гигиена',
@@ -19,8 +22,8 @@ const CosmeticsHygiene = () => {
   ]
 
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    fetchProducts(page, limit)
+  }, [page])
 
   return (
     <ContentWrapper>

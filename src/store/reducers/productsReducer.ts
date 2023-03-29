@@ -5,7 +5,8 @@ const initialState: IProductsState = {
   productsType: [],
   page: 1,
   limit: 9,
-  isLoading: false
+  isLoading: false,
+  totalCount: 0
 }
 
 export const productsReducer = (state = initialState, action: ProductsAction): IProductsState => {
@@ -30,6 +31,11 @@ export const productsReducer = (state = initialState, action: ProductsAction): I
         ...state,
         productsType: action.productTypes
       }
+    case ProductsActionTypes.SET_PRODUCTS_TOTAL_COUNT:
+      return {
+        ...state,
+        totalCount: action.totalCount
+      }
     default:
       return state
   }
@@ -48,3 +54,4 @@ export const setProductsTypes = (productTypes: IProductTypes[]): ProductsAction 
   type: ProductsActionTypes.SET_PRODUCTS_TYPES,
   productTypes
 })
+export const setProductsTotalCount = (totalCount: number): ProductsAction => ({type: ProductsActionTypes.SET_PRODUCTS_TOTAL_COUNT, totalCount})

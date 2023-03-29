@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from 'react'
 import styles from './filterWithCheckbox.module.scss'
 import Search from '../Search/Search'
-import CustomCheckbox from '../customCheckbox/CustomCheckbox'
+import CustomCheckbox from '../CustomCheckbox/CustomCheckbox'
 import {IManufacturer} from '../../types/filter'
 import {MoreIcon} from '../svg'
 import {IProductTypes} from '../../types/products'

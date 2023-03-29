@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
 import styles from './ButtonsBlock.module.scss'
-import {CatalogSvg, SearchSvg} from '../../../svg'
+import {CatalogIcon, SearchIcon} from '../../../svg'
 import {useNavigate} from 'react-router-dom'
 import {COSMETICS_HYGIENE_ROUTE} from '../../../../utils/consts'
 
@@ -12,7 +12,7 @@ const ButtonsBlock: FC = () => {
       <div className={`button ${styles.buttonsBlock__catalog}`} onClick={() => navigate(COSMETICS_HYGIENE_ROUTE)}>
         <div className={styles.buttonsBlock__content}>
           <span>Каталог</span>
-          <CatalogSvg/>
+          <CatalogIcon/>
         </div>
       </div>
       <div className={`dashedLineVert ${styles.buttonsBlock__line}`}></div>
@@ -20,7 +20,7 @@ const ButtonsBlock: FC = () => {
         <div className={styles.buttonsBlock__content}>
           <input type="text" placeholder={'Поиск...'}/>
           <div className={styles.buttonsBlock__searchButton}>
-            <SearchSvg/>
+            <SearchIcon/>
           </div>
           <div className={styles.buttonsBlock__searchText}>Поиск</div>
         </div>

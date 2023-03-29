@@ -1,6 +1,6 @@
 import {Dispatch} from 'react'
 import {IProduct, IProductTypes, ProductsAction} from '../../types/products'
-import {setProducts, setProductsIsLoading, setProductsTypes} from '../reducers/productsReducer'
+import {setProducts, setProductsIsLoading, setProductsTotalCount, setProductsTypes} from '../reducers/productsReducer'
 import {getProducts} from '../../api/productsApi'
 
 const getProductsTypes = (products: IProduct[]) => {
@@ -26,12 +26,17 @@ const getProductsTypes = (products: IProduct[]) => {
   return types
 }
 
-export const fetchProducts = () => {
+const sortByPage = (products: IProduct[], page: number, limit: number): IProduct[] => {
+  return products.slice((page - 1) * limit, page * limit)
+}
+
+export const fetchProducts = (page: number, limit: number) => {
   return (dispatch: Dispatch<ProductsAction>) => {
     dispatch(setProductsIsLoading(true))
     getProducts()
       .then(products => {
-        dispatch(setProducts(products))
+        dispatch(setProducts(sortByPage(products, page, limit)))
+        dispatch(setProductsTotalCount(products.length))
         dispatch(setProductsTypes(getProductsTypes(products)))
       })
       .catch(e => {
@@ -42,3 +47,4 @@ export const fetchProducts = () => {
       })
   }
 }
+

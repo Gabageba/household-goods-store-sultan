@@ -2,4 +2,23 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-top: 20px;
+
+  &__content {
+    max-width: 1020px;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 21px;
+  }
+
+  &__subText {
+    font-weight: 400;
+    line-height: 150%;
+    width: 910px;
+    color: var(--sub-text-color);
+    margin-top: 68px;
+  }
 }
