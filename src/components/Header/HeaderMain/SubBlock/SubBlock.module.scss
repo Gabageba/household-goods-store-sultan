@@ -10,15 +10,15 @@
   }
 
   &__priceList {
-    padding-left: 43px;
-    padding-right: 43px;
+    padding-left: 43px !important;
+    padding-right: 43px !important;
     @media (max-width: 992px) {
       display: none !important;
     }
 
     @media (max-width: 1200px) {
-      padding-left: 34px;
-      padding-right: 34px;
+      padding-left: 34px !important;
+      padding-right: 34px !important;
       //display: none;
     }
   }

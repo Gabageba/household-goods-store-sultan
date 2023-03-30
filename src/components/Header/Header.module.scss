@@ -1,5 +1,10 @@
 .header {
-  position: relative;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  background-color: var(--bg-color);
+  top: 0;
+  left: 0;
 
   &__underLine {
     @media (max-width: 992px) {

@@ -16,7 +16,7 @@ const ButtonsBlock: FC = () => {
         </div>
       </div>
       <div className={`dashedLineVert ${styles.buttonsBlock__line}`}></div>
-      <div className={`searchInput ${styles.buttonsBlock__search}`}>
+      <div className={`textInput ${styles.buttonsBlock__search}`}>
         <div className={styles.buttonsBlock__content}>
           <input type="text" placeholder={'Поиск...'}/>
           <div className={styles.buttonsBlock__searchButton}>

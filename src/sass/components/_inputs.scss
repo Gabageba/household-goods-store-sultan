@@ -1,6 +1,6 @@
 @use "src/sass/abstracts/functions";
 
-.searchInput {
+.textInput {
   background-color: var(--search-input-bg-color);
   display: flex;
   align-items: center;
@@ -14,6 +14,7 @@
     margin-right: 10px;
     height: 100%;
     font-size: functions.toRem(12);
+    color: var(--search-input-text-color);
 
     &::-moz-placeholder {
       color: var(--search-input-text-color);

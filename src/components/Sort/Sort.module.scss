@@ -36,7 +36,8 @@
 .dropDown {
   display: none;
   position: absolute;
-  top: -300%;
+  top: 100%;
+  background-color: var(--bg-color);
   &__item {
     cursor: pointer;
   }

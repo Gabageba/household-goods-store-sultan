@@ -9,6 +9,7 @@ import TypeFilter from '../../components/TypeFilter/TypeFilter'
 import Catalog from '../../components/Catalog/Catalog'
 import {useActions} from '../../hooks/useActions'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
+import Footer from '../../components/Footer/Footer'
 
 const CosmeticsHygiene = () => {
   const {fetchProducts} = useActions()
@@ -26,15 +27,18 @@ const CosmeticsHygiene = () => {
   }, [page])
 
   return (
-    <ContentWrapper>
-      <Paths paths={paths}/>
-      <div className={styles.cosmeticsHygiene}>
-        <h1>Косметика и гигиена</h1>
-        <Sort />
-      </div>
-      <TypeFilter types={COSMETICS_HYGIENE_TYPES} />
-      <Catalog />
-    </ContentWrapper>
+    <div className={'pageContent'}>
+      <ContentWrapper>
+        <Paths paths={paths}/>
+        <div className={styles.cosmeticsHygiene}>
+          <h1>Косметика и гигиена</h1>
+          <Sort />
+        </div>
+        <TypeFilter types={COSMETICS_HYGIENE_TYPES} />
+        <Catalog />
+      </ContentWrapper>
+      <Footer />
+    </div>
   )
 }
 
