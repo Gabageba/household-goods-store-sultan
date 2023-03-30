@@ -21,7 +21,7 @@ const Pagination = () => {
       <div className={styles.pagination__arrow_left} onClick={() => setProductsPage(page - 1)}><PaginationArrowIcon/></div>
       {
         getPages(limit).map(pageItem =>
-          <div className={`${styles.pagination__page} ${pageItem === page ? styles.pagination__page_active: ''}`}
+          <div key={pageItem} className={`${styles.pagination__page} ${pageItem === page ? styles.pagination__page_active: ''}`}
                onClick={() => setProductsPage(pageItem)}>
             {pageItem}
           </div>

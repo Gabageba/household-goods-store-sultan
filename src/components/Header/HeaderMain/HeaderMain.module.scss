@@ -41,6 +41,11 @@
     height: 58px;
     display: none;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--hover-button-bg-color);
+    }
 
     @media (max-width: 992px) {
       display: flex;

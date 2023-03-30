@@ -13,7 +13,7 @@
 
   &__chooseSortType {
     position: relative;
-    width: 115px;
+    //width: 115px;
   }
 
   &__currentSortType {
@@ -36,7 +36,8 @@
 .dropDown {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 110%;
+  right: 0;
   background-color: var(--bg-color);
   &__item {
     cursor: pointer;

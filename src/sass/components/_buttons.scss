@@ -7,6 +7,11 @@
   align-items: center;
   cursor: pointer;
   font-weight: 700;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--hover-button-bg-color);
+  }
 
   @media (max-width: 1200px) {
     padding: 21px 34px;

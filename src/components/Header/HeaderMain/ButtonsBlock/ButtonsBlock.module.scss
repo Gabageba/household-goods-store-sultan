@@ -82,6 +82,7 @@
       width: 50%;
       background-color: transparent !important;
       padding: 0 !important;
+      cursor: pointer;
     }
 
     input {
@@ -108,6 +109,12 @@
     box-sizing: content-box;
     background-color: var(--button-bg-color);
     border-radius: 50%;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--hover-button-bg-color);
+    }
 
     @media (max-width: 992px) {
       background-color: transparent;

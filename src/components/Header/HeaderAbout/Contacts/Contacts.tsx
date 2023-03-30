@@ -36,7 +36,7 @@ const Contacts: FC = () => {
           <div className={styles.contacts__requestCall_button}>
             <img width={10} height={10} src={phoneFilled} alt="phone"/>
           </div>
-          <div className={styles.contacts__requestCall_text}>Заказать звонок</div>
+          <a href={'tel: +77774900091'}  className={styles.contacts__requestCall_text}>Заказать звонок</a>
         </div>
       </div>
 

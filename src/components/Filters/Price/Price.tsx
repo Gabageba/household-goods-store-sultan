@@ -1,7 +1,14 @@
-import React from 'react'
+import React, {Dispatch, FC, SetStateAction} from 'react'
 import styles from './Price.module.scss'
 
-const Price = () => {
+interface PriceProps {
+  minPrice: string
+  setMinPrice: Dispatch<SetStateAction<string>>
+  maxPrice: string
+  setMaxPrice: Dispatch<SetStateAction<string>>
+}
+
+const Price: FC<PriceProps> = ({minPrice, setMinPrice, setMaxPrice, maxPrice}) => {
   return (
     <div className={styles.price}>
       <div className={styles.title}>
@@ -9,9 +16,9 @@ const Price = () => {
         <span>₸</span>
       </div>
       <div className={styles.price__range}>
-        <input type={'number'} className={styles.price__range_input} value={0}/>
+        <input type={'number'} className={styles.price__range_input} placeholder={'мин'} onChange={e => setMinPrice(e.target.value)} value={minPrice}/>
         <span>-</span>
-        <input type={'number'} className={styles.price__range_input} value={10000}/>
+        <input type={'number'} className={styles.price__range_input} placeholder={'макс'} onChange={e => setMaxPrice(e.target.value)} value={maxPrice}/>
       </div>
     </div>
   )

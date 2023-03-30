@@ -14,5 +14,9 @@
     line-height: 150%;
     color: var(--sub-text-color);
     cursor: pointer;
+
+    &_active {
+      color: var(--active-text-color)
+    }
   }
 }
