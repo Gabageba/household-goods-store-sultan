@@ -2,13 +2,12 @@ import {Dispatch} from 'react'
 import {IProduct, IProductTypes, ProductsAction} from '../../types/products'
 import {setProducts, setProductsIsLoading, setProductsTotalCount, setProductsTypes} from '../reducers/productsReducer'
 import {getProducts} from '../../api/productsApi'
-import {IManufacturer} from '../../types/filter'
 
 interface filters {
   type?: string | null,
   minPrice?: string,
   maxPrice?: string,
-  manufacturers?: IManufacturer[] | null
+  manufacturers?: string[] | null
 }
 
 const filterProducts = (products: IProduct[], filters: filters): IProduct[]=> {
@@ -28,7 +27,7 @@ const filterProducts = (products: IProduct[], filters: filters): IProduct[]=> {
   if (filters.manufacturers?.length !== 0) {
     result = result.filter(product => {
       let isContains = false
-      filters.manufacturers!.forEach(manufacturer => manufacturer.name === product.manufacturer ? isContains = true : null)
+      filters.manufacturers!.forEach(manufacturer => manufacturer === product.manufacturer ? isContains = true : null)
       return isContains
     })
   }
@@ -74,7 +73,7 @@ export const fetchProducts = (page: number, limit: number, filters?: filters) =>
 
         dispatch(setProducts(sortByPage(result, page, limit)))
         dispatch(setProductsTotalCount(result.length))
-        dispatch(setProductsTypes(getProductsTypes(result)))
+        dispatch(setProductsTypes(getProductsTypes(products)))
       })
       .catch(e => {
         console.error(e)

@@ -10,13 +10,13 @@ import Catalog from '../../components/Catalog/Catalog'
 import {useActions} from '../../hooks/useActions'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import Footer from '../../components/Footer/Footer'
-import {FilterTypes, IManufacturer} from '../../types/filter'
+import {FilterTypes} from '../../types/filter'
 
 const CosmeticsHygiene = () => {
   const [selectedTypeFilter, setSelectedTypeFilter] = useState<FilterTypes | null>(null)
-  const [minPrice, setMinPrice] = useState<string>('')
-  const [maxPrice, setMaxPrice] = useState<string>('')
-  const [manufacturers, setManufacturers] = useState<IManufacturer[]>([])
+  const [selectedMinPrice, setSelectedMinPrice] = useState<string>('')
+  const [selectedMaxPrice, setSelectedMaxPrice] = useState<string>('')
+  const [selectedManufacturers, setSelectedManufacturers] = useState<string[]>([])
   const {fetchProducts} = useActions()
   const {page, limit} = useTypedSelector(state => state.products)
   const {setProductsPage} = useActions()
@@ -28,6 +28,20 @@ const CosmeticsHygiene = () => {
     }
   ]
 
+  const selectManufacturers = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelectedManufacturers(prevState => {
+        return [...prevState, e.target.value]
+      })
+    } else {
+      setSelectedManufacturers(prevState => {
+        const index = prevState.indexOf(e.target.value)
+        prevState.splice(index, 1)
+        return [...prevState]
+      })
+    }
+  }
+
   const handleClickType = (type: string): void => {
     const key = type as keyof typeof FilterTypes
     if (FilterTypes[key] === selectedTypeFilter) {
@@ -37,23 +51,35 @@ const CosmeticsHygiene = () => {
     }
   }
 
+  const clearFilter = () => {
+    setProductsPage(1)
+    setSelectedManufacturers([])
+    setSelectedMaxPrice('')
+    setSelectedMinPrice('')
+    fetchProducts(1, limit, {type: selectedTypeFilter})
+  }
+
   const fetchFilterProducts = () => {
     setProductsPage(1)
     fetchProducts(1, limit, {
       type: selectedTypeFilter,
-      minPrice: minPrice,
-      maxPrice: maxPrice,
-      manufacturers: manufacturers
+      minPrice: selectedMinPrice,
+      maxPrice: selectedMaxPrice,
+      manufacturers: selectedManufacturers
     })
   }
 
   useEffect(() => {
-    fetchProducts(page, limit)
+    fetchProducts(page, limit, {
+      type: selectedTypeFilter,
+      minPrice: selectedMinPrice,
+      maxPrice: selectedMaxPrice,
+      manufacturers: selectedManufacturers
+    })
   }, [page])
 
   useEffect(() => {
     fetchFilterProducts()
-    setManufacturers([])
   }, [selectedTypeFilter])
 
   return (
@@ -70,11 +96,14 @@ const CosmeticsHygiene = () => {
         />
         <Catalog selectedType={selectedTypeFilter}
                  setSelectedType={handleClickType}
-                 minPrice={minPrice}
-                 setMinPrice={setMinPrice}
-                 maxPrice={maxPrice}
-                 setMaxPrice={setMaxPrice}
+                 selectedMinPrice={selectedMinPrice}
+                 setSelectedMinPrice={setSelectedMinPrice}
+                 selectedMaxPrice={selectedMaxPrice}
+                 setSelectedMaxPrice={setSelectedMaxPrice}
                  fetchFilter={fetchFilterProducts}
+                 setSelectedManufacturers={selectManufacturers}
+                 clearFilters={clearFilter}
+                 selectedManufacturers={selectedManufacturers}
         />
       </ContentWrapper>
       <Footer/>

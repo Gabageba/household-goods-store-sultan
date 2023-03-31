@@ -11,28 +11,46 @@ import {FilterTypes} from '../../types/filter'
 interface FiltersProps {
   selectedType: FilterTypes | null
   setSelectedType: (str: string) => void
-  minPrice: string
-  setMinPrice: Dispatch<SetStateAction<string>>
-  maxPrice: string
-  setMaxPrice: Dispatch<SetStateAction<string>>
+  selectedMinPrice: string
+  setSelectedMinPrice: Dispatch<SetStateAction<string>>
+  selectedMaxPrice: string
+  setSelectedMaxPrice: Dispatch<SetStateAction<string>>
+  selectedManufacturers: string[]
+  setSelectedManufacturers: (e: React.ChangeEvent<HTMLInputElement>) => void
   fetchFilter: () => void
+  clearFilters: () => void
 }
 
-const Filters: FC<FiltersProps> = ({selectedType, setSelectedType, setMinPrice, minPrice, maxPrice, setMaxPrice, fetchFilter}) => {
+const Filters: FC<FiltersProps> = ({
+                                     selectedType,
+                                     setSelectedType,
+                                     setSelectedMaxPrice,
+                                     setSelectedMinPrice,
+                                     selectedMinPrice,
+                                     selectedMaxPrice,
+                                     setSelectedManufacturers,
+                                     fetchFilter,
+                                     clearFilters,
+                                     selectedManufacturers
+                                   }) => {
   const {productsType} = useTypedSelector(state => state.products)
 
   return (
     <div className={styles.filters}>
       <h3>Подбор по параметрам</h3>
-      <Price minPrice={minPrice}
-             setMinPrice={setMinPrice}
-             maxPrice={maxPrice}
-             setMaxPrice={setMaxPrice}
+      <Price minPrice={selectedMinPrice}
+             setMinPrice={setSelectedMinPrice}
+             maxPrice={selectedMaxPrice}
+             setMaxPrice={setSelectedMaxPrice}
       />
-      <FilterWithCheckbox title={'Производитель'} types={productsType}/>
+      <FilterWithCheckbox title={'Производитель'}
+                          types={productsType}
+                          setSelectedManufacturers={setSelectedManufacturers}
+                          selectedManufacturers={selectedManufacturers}
+      />
       <div className={styles.buttons}>
         <div className={`button ${styles.button__show}`} onClick={fetchFilter}>Показать</div>
-        <div className={styles.button__clear}>
+        <div className={styles.button__clear} onClick={clearFilters}>
           <img src={deleteIcon} alt="delete"/>
         </div>
       </div>

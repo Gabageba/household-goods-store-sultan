@@ -1,8 +1,17 @@
+@use "src/sass/abstracts/functions";
+
 .catalog {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 20px;
+
+  &__notFound {
+    display: flex;
+    justify-content: center;
+    font-size: functions.toRem(20);
+    margin-top: 60px;
+  }
 
   &__content {
     max-width: 1020px;
