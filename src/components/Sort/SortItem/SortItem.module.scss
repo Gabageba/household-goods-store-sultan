@@ -1,0 +1,18 @@
+.sortItem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  //margin-bottom: 5px;
+
+  span {
+    margin-right: 5px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    &_up {
+      transform: rotate(180deg);
+    }
+  }
+}

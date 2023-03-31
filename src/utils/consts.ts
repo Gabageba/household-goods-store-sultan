@@ -1,25 +1,30 @@
-import {ISort, IType} from '../types/filter'
+import {IType} from '../types/filter'
+import {ISort, SortTypesName, SortTypesPosition} from '../types/sort'
 
 export const COSMETICS_HYGIENE_ROUTE = '/cosmeticsHygiene'
 export const BASKET_ROUTE = '/basket'
 
 export const SORT_TYPES: ISort[] = [
   {
-    id: 'name',
-    name: 'Название'
+    id: 'nameUp',
+    name: SortTypesName.name,
+    position: SortTypesPosition.up
   },
   {
-    id: 'price',
-    name: 'Цена'
+    id: 'nameDown',
+    name: SortTypesName.name,
+    position: SortTypesPosition.down,
   },
   {
-    id: 'descending',
-    name: 'Убывание'
+    id: 'priceUp',
+    name: SortTypesName.price,
+    position: SortTypesPosition.up
   },
   {
-    id: 'increase',
-    name: 'Возрастание'
-  }
+    id: 'priceDown',
+    name: SortTypesName.price,
+    position: SortTypesPosition.down
+  },
 ]
 
 export const COSMETICS_HYGIENE_TYPES: IType[] = [

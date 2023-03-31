@@ -1,24 +1,19 @@
-import React, {useState} from 'react'
+import React, {Dispatch, FC, SetStateAction, useState} from 'react'
 import styles from './Sort.module.scss'
 import {SORT_TYPES} from '../../utils/consts'
-import {MoreIcon} from '../svg'
+import {ISort} from '../../types/sort'
+import SortItem from './SortItem/SortItem'
 
-const Sort = () => {
+interface SortProps {
+  currentSort: ISort
+  setCurrentSort: Dispatch<SetStateAction<ISort>>
+}
+
+const Sort: FC<SortProps> = ({setCurrentSort, currentSort}) => {
   const [isDropDownActive, setIsDropDownActive] = useState<boolean>(false)
-  const [currentSort, setCurrentSort] = useState<string>('name')
 
-  const getSortTypeName = (id: string): string => {
-    let name = ''
-    SORT_TYPES.forEach(type => {
-      if (type.id === id) {
-        name = type.name
-      }
-    })
-    return name
-  }
-
-  const handleDropDownItemClick = (id: string): void => {
-    setCurrentSort(id)
+  const handleDropDownItemClick = (type: ISort): void => {
+    setCurrentSort(type)
     setIsDropDownActive(false)
   }
 
@@ -26,15 +21,12 @@ const Sort = () => {
     <div className={styles.sort}>
       <div className={styles.sort__header}>Сортировка:</div>
       <div className={styles.sort__chooseSortType}>
-        <div className={`${styles.sort__currentSortType} ${isDropDownActive ? styles.sort__currentSortType_active : ''}`} onClick={() => setIsDropDownActive(prevState => !prevState)}>
-          <span>{getSortTypeName(currentSort)}</span>
-          <MoreIcon/>
-        </div>
+        <SortItem name={currentSort.name} handleClick={() => setIsDropDownActive(prevState => !prevState)} position={currentSort.position}/>
         <div className={`${styles.dropDown} ${isDropDownActive ? styles.dropDown_active : ''}`}>
           {
             SORT_TYPES.map(type => {
-              return type.id !== currentSort &&
-                <div className={styles.dropDown__item} key={type.id} onClick={() => handleDropDownItemClick(type.id)}>{type.name}</div>
+              return type.id !== currentSort.id &&
+                <SortItem name={type.name} handleClick={() => handleDropDownItemClick(type)} key={type.id} position={type.position}/>
             })
           }
         </div>

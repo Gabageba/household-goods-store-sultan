@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper'
 import Paths from '../../components/Paths/Paths'
-import {COSMETICS_HYGIENE_ROUTE, COSMETICS_HYGIENE_TYPES} from '../../utils/consts'
+import {COSMETICS_HYGIENE_ROUTE, COSMETICS_HYGIENE_TYPES, SORT_TYPES} from '../../utils/consts'
 import {IPaths} from '../../types/path'
 import Sort from '../../components/Sort/Sort'
 import styles from './CosmeticsHygiene.module.scss'
@@ -11,14 +11,17 @@ import {useActions} from '../../hooks/useActions'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import Footer from '../../components/Footer/Footer'
 import {FilterTypes} from '../../types/filter'
+import Loader from '../../components/Loader/Loader'
+import {ISort} from '../../types/sort'
 
 const CosmeticsHygiene = () => {
   const [selectedTypeFilter, setSelectedTypeFilter] = useState<FilterTypes | null>(null)
   const [selectedMinPrice, setSelectedMinPrice] = useState<string>('')
   const [selectedMaxPrice, setSelectedMaxPrice] = useState<string>('')
+  const [currentSort, setCurrentSort] = useState<ISort>(SORT_TYPES[0])
   const [selectedManufacturers, setSelectedManufacturers] = useState<string[]>([])
   const {fetchProducts} = useActions()
-  const {page, limit} = useTypedSelector(state => state.products)
+  const {page, limit, isLoading} = useTypedSelector(state => state.products)
   const {setProductsPage} = useActions()
 
   const paths: IPaths[] = [
@@ -56,12 +59,12 @@ const CosmeticsHygiene = () => {
     setSelectedManufacturers([])
     setSelectedMaxPrice('')
     setSelectedMinPrice('')
-    fetchProducts(1, limit, {type: selectedTypeFilter})
+    fetchProducts(1, limit, currentSort, {type: selectedTypeFilter})
   }
 
   const fetchFilterProducts = () => {
     setProductsPage(1)
-    fetchProducts(1, limit, {
+    fetchProducts(1, limit, currentSort, {
       type: selectedTypeFilter,
       minPrice: selectedMinPrice,
       maxPrice: selectedMaxPrice,
@@ -70,7 +73,7 @@ const CosmeticsHygiene = () => {
   }
 
   useEffect(() => {
-    fetchProducts(page, limit, {
+    fetchProducts(page, limit, currentSort, {
       type: selectedTypeFilter,
       minPrice: selectedMinPrice,
       maxPrice: selectedMaxPrice,
@@ -80,7 +83,11 @@ const CosmeticsHygiene = () => {
 
   useEffect(() => {
     fetchFilterProducts()
-  }, [selectedTypeFilter])
+  }, [selectedTypeFilter, currentSort])
+
+  if (isLoading) {
+    return <Loader/>
+  }
 
   return (
     <div className={'pageContent'}>
@@ -88,7 +95,7 @@ const CosmeticsHygiene = () => {
         <Paths paths={paths}/>
         <div className={styles.cosmeticsHygiene}>
           <h1>Косметика и гигиена</h1>
-          <Sort/>
+          <Sort currentSort={currentSort} setCurrentSort={setCurrentSort}/>
         </div>
         <TypeFilter types={COSMETICS_HYGIENE_TYPES}
                     selectedType={selectedTypeFilter}

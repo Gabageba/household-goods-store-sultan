@@ -1,8 +1,3 @@
-export interface ISort {
-  id: string
-  name: string
-}
-
 export interface IType {
   id: string,
   name: string

@@ -1,0 +1,27 @@
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform:translate(-50%, -50%);
+}
+
+.sblCirc {
+  height: 100px;
+  width: 100px;
+  color: var(--active-text-color);
+  position: relative;
+  display: inline-block;
+  border: 10px solid;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

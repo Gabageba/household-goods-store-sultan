@@ -31,6 +31,10 @@ const FilterWithCheckbox: FC<FilterWithCheckboxProps> = ({
     }
   }, [isShowMore, filteredManufactured])
 
+  useEffect(() => {
+    setFilteredManufactured(types)
+  }, [types])
+
   const inputChangeHandler = (filterText: string) => {
     setFilteredManufactured(types.filter(type => type.name.toLowerCase().includes(filterText.toLowerCase())))
   }
@@ -52,7 +56,7 @@ const FilterWithCheckbox: FC<FilterWithCheckboxProps> = ({
             }
           </div>
           {
-            types.length > 4 &&
+            filteredManufactured.length > 4 &&
             <div className={`${styles.showMore} ${isShowMore ? styles.showMore_active : ''}`}
                  onClick={() => setIsShoreMore(prevState => !prevState)}>
               <span>{isShowMore ? 'Скрыть все' : 'Показать все'}</span>

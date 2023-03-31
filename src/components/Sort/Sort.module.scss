@@ -15,22 +15,6 @@
     position: relative;
     //width: 115px;
   }
-
-  &__currentSortType {
-    display: flex;
-    align-items: center;
-
-    &_active {
-      svg {
-        transform: rotate(180deg);
-      }
-    }
-
-    span {
-      margin-right: 5px;
-      cursor: pointer;
-    }
-  }
 }
 
 .dropDown {
@@ -38,10 +22,10 @@
   position: absolute;
   top: 110%;
   right: 0;
+  padding-left: 10px;
+  padding-bottom: 10px;
+
   background-color: var(--bg-color);
-  &__item {
-    cursor: pointer;
-  }
 
   &_active {
     display: block;
