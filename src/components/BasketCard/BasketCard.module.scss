@@ -1,0 +1,105 @@
+@use "src/sass/abstracts/functions";
+
+.basketCard {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__line {
+    height: 49px;
+    margin-left: 44px;
+    margin-right: 44px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    margin-left: 21px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: functions.toRem(30);
+    line-height: 130%;
+    color: var(--main-text-color);
+  }
+
+  &__delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 59px;
+    height: 59px;
+    background-color: var(--button-bg-color);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.info {
+  width: 444px;
+  margin-left: 21px;
+
+  &__size {
+    display: flex;
+    align-items: center;
+
+    svg {
+      height: 15px;
+      margin-right: 8px;
+    }
+
+    span {
+      font-weight: 400;
+      font-size: functions.toRem(12);
+      line-height: 130%;
+      color: var(--sub-text-color);
+    }
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: functions.toRem(30);
+    line-height: 36px;
+    color: var(--main-text-color);
+    margin-top: 9px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // количество строк
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__description {
+    font-weight: 300;
+    font-size: functions.toRem(12);
+    line-height: 150%;
+    color: var(--sub-text-color);
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; // количество строк
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.amount {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  &__button {
+    width: 34px;
+    height: 23px;
+    background: var(--active-bg-color);
+    border-radius: 100px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: functions.toRem(12);
+    line-height: 15px;
+    color: var(--sub-text-color);
+  }
+}

@@ -75,3 +75,4 @@ export const COSMETICS_HYGIENE_TYPES: IType[] = [
 ]
 
 export const PRODUCTS_LOCAL_STORAGE = 'Products'
+export const BASKET_LOCAL_STORAGE = 'Basket'

@@ -2,13 +2,14 @@ import React, {FC} from 'react'
 import styles from './ProductCard.module.scss'
 import {IProduct} from '../../types/products'
 import {BasketIcon, VolumeIcon, WeightIcon} from '../svg'
-import Basket from '../../pages/Basket/Basket'
+import {useActions} from '../../hooks/useActions'
 
 interface ProductCardProps {
   product: IProduct
 }
 
 const ProductCard: FC<ProductCardProps> = ({product}) => {
+  const {addBasketItem} = useActions()
 
   const formatPrice = (price: number): string => {
     return new Intl.NumberFormat('ru-RU').format(price)
@@ -38,7 +39,7 @@ const ProductCard: FC<ProductCardProps> = ({product}) => {
       </div>
       <div className={styles.buyBlock}>
         <span className={styles.buyBlock__price}>{formatPrice(product.price)} ₸</span>
-        <div className={`button ${styles.buyBlock__button}`}>
+        <div className={`button ${styles.buyBlock__button}`} onClick={() => addBasketItem(product)}>
           <span>В козину</span>
           <BasketIcon/>
         </div>

@@ -4,12 +4,4 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
-  h1 {
-    font-weight: 500;
-    font-size: functions.toRem(40);
-    text-transform: uppercase;
-    line-height: 120%;
-    color: var(--main-text-color)
-  }
 }

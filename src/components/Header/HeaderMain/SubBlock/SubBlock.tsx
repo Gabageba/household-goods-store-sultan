@@ -5,9 +5,11 @@ import download from '../../../../assets/icons/download.svg'
 import basket from '../../../../assets/icons/basket.svg'
 import {useNavigate} from 'react-router-dom'
 import {BASKET_ROUTE} from '../../../../utils/consts'
+import {useTypedSelector} from '../../../../hooks/useTypedSelector'
 
 const SubBlock: FC = () => {
   const navigate = useNavigate()
+  const {totalPrice, totalCount} = useTypedSelector(state => state.basket)
 
   return (
     <div className={styles.subBlock}>
@@ -28,11 +30,11 @@ const SubBlock: FC = () => {
       <div className={styles.subBlock__basket} onClick={() => navigate(BASKET_ROUTE)}>
         <div className={styles.subBlock__basket__basketIcon}>
           <img width={46} src={basket} alt="basket"/>
-          <div className={styles.subBlock__basket_counter}>3</div>
+          {totalCount > 0 &&  <div className={styles.subBlock__basket_counter}>{totalCount}</div>}
         </div>
         <div className={styles.subBlock__price}>
           <div className={styles.subBlock__price_title}>Корзина</div>
-          <div className={styles.subBlock__price_subTitle}>12 478 ₸</div>
+          <div className={styles.subBlock__price_subTitle}>{totalPrice} ₸</div>
         </div>
       </div>
     </div>

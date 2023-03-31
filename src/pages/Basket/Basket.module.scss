@@ -1,0 +1,10 @@
+@use "src/sass/abstracts/functions";
+
+.basket {
+
+  &__notFound {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-size: functions.toRem(20);
+  }
+}
