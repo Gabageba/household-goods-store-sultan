@@ -3,9 +3,10 @@ import {IProduct, IProductTypes, ProductsAction} from '../../types/products'
 import {setProducts, setProductsIsLoading, setProductsTotalCount, setProductsTypes} from '../reducers/productsReducer'
 import {getProducts} from '../../api/productsApi'
 import {ISort, SortTypesName, SortTypesPosition} from '../../types/sort'
+import {FilterTypes} from '../../types/filter'
 
 interface filters {
-  type?: string | null,
+  types: FilterTypes[],
   minPrice?: string,
   maxPrice?: string,
   manufacturers?: string[] | null
@@ -48,8 +49,16 @@ const sortProducts = (products: IProduct[], sort: ISort): IProduct[] => {
 
 const filterProducts = (products: IProduct[], filters: filters): IProduct[] => {
   let result = products
-  if (filters.type) {
-    result = result.filter(product => product.careType.includes(filters.type!))
+  if (filters.types?.length > 0) {
+    result = result.filter(product => {
+      let isContains = false
+      filters.types?.forEach(t => {
+        if (product.careType.includes(t)) {
+          isContains  = true
+        }
+      })
+      return isContains
+    })
   }
 
   if (filters.minPrice) {

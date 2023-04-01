@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper'
 import Paths from '../../components/Paths/Paths'
 import {COSMETICS_HYGIENE_ROUTE, COSMETICS_HYGIENE_TYPES, SORT_TYPES} from '../../utils/consts'
@@ -6,16 +6,16 @@ import {IPaths} from '../../types/path'
 import Sort from '../../components/Sort/Sort'
 import styles from './CosmeticsHygiene.module.scss'
 import TypeFilter from '../../components/TypeFilter/TypeFilter'
-import Catalog from '../../components/Catalog/Catalog'
 import {useActions} from '../../hooks/useActions'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import Footer from '../../components/Footer/Footer'
 import {FilterTypes} from '../../types/filter'
 import Loader from '../../components/Loader/Loader'
 import {ISort} from '../../types/sort'
+import Catalog from '../../components/Catalog/Catalog'
 
 const CosmeticsHygiene = () => {
-  const [selectedTypeFilter, setSelectedTypeFilter] = useState<FilterTypes | null>(null)
+  const [selectedTypeFilters, setSelectedTypeFilters] = useState<FilterTypes[]>([])
   const [selectedMinPrice, setSelectedMinPrice] = useState<string>('')
   const [selectedMaxPrice, setSelectedMaxPrice] = useState<string>('')
   const [currentSort, setCurrentSort] = useState<ISort>(SORT_TYPES[0])
@@ -47,11 +47,15 @@ const CosmeticsHygiene = () => {
 
   const handleClickType = (type: string): void => {
     const key = type as keyof typeof FilterTypes
-    if (FilterTypes[key] === selectedTypeFilter) {
-      setSelectedTypeFilter(null)
+    const index = selectedTypeFilters.findIndex(t => t === FilterTypes[key])
+    if (index !== -1) {
+      let result = selectedTypeFilters
+      result.splice(index, 1)
+      setSelectedTypeFilters([...result])
     } else {
-      setSelectedTypeFilter(FilterTypes[key])
+      setSelectedTypeFilters(prevState => [...prevState, FilterTypes[key]])
     }
+
   }
 
   const clearFilter = () => {
@@ -59,13 +63,13 @@ const CosmeticsHygiene = () => {
     setSelectedManufacturers([])
     setSelectedMaxPrice('')
     setSelectedMinPrice('')
-    fetchProducts(1, limit, currentSort, {type: selectedTypeFilter})
+    fetchProducts(1, limit, currentSort, {types: selectedTypeFilters})
   }
 
   const fetchFilterProducts = () => {
     setProductsPage(1)
     fetchProducts(1, limit, currentSort, {
-      type: selectedTypeFilter,
+      types: selectedTypeFilters,
       minPrice: selectedMinPrice,
       maxPrice: selectedMaxPrice,
       manufacturers: selectedManufacturers
@@ -74,7 +78,7 @@ const CosmeticsHygiene = () => {
 
   useEffect(() => {
     fetchProducts(page, limit, currentSort, {
-      type: selectedTypeFilter,
+      types: selectedTypeFilters,
       minPrice: selectedMinPrice,
       maxPrice: selectedMaxPrice,
       manufacturers: selectedManufacturers
@@ -83,7 +87,7 @@ const CosmeticsHygiene = () => {
 
   useEffect(() => {
     fetchFilterProducts()
-  }, [selectedTypeFilter, currentSort])
+  }, [selectedTypeFilters, currentSort])
 
   if (isLoading) {
     return <Loader/>
@@ -98,10 +102,10 @@ const CosmeticsHygiene = () => {
           <Sort currentSort={currentSort} setCurrentSort={setCurrentSort}/>
         </div>
         <TypeFilter types={COSMETICS_HYGIENE_TYPES}
-                    selectedType={selectedTypeFilter}
+                    selectedType={selectedTypeFilters}
                     setSelectedType={handleClickType}
         />
-        <Catalog selectedType={selectedTypeFilter}
+        <Catalog selectedType={selectedTypeFilters}
                  setSelectedType={handleClickType}
                  selectedMinPrice={selectedMinPrice}
                  setSelectedMinPrice={setSelectedMinPrice}

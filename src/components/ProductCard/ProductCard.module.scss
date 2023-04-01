@@ -9,6 +9,10 @@
   flex-direction: column;
   justify-content: space-between;
 
+  @media (max-width: 1370px) {
+    width: auto;
+  }
+
   &__size {
     margin-top: 10px;
     display: flex;

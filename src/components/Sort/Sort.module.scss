@@ -5,6 +5,10 @@
   font-size: functions.toRem(16);
   line-height: 150%;
 
+  @media (max-width: 992px) {
+    display: none;
+  }
+
   &__header {
     font-weight: 500;
     margin-right: 5px;

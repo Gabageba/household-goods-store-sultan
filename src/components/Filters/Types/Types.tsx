@@ -4,7 +4,7 @@ import {FilterTypes, IType} from '../../../types/filter'
 
 interface TypesProps {
   types: IType[]
-  selectedType: FilterTypes | null
+  selectedType: FilterTypes[]
   setSelectedType: (str: string) => void
 }
 
@@ -17,7 +17,7 @@ const Types: FC<TypesProps> = ({types, setSelectedType, selectedType}) => {
         {
           types.map((type) =>
             <div key={type.id}
-                 className={`${styles.types__item} ${selectedType === type.name ? styles.types__item_active: ''}`}
+                 className={`${styles.types__item} ${selectedType.includes(FilterTypes[type.id as keyof typeof FilterTypes]) ? styles.types__item_active : ''}`}
                  onClick={() => setSelectedType(type.id)}
             >
               {type.name}

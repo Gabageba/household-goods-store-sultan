@@ -4,4 +4,10 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  h1 {
+    @media (max-width: 767px) {
+      font-size: functions.toRem(20);
+    }
+  }
 }

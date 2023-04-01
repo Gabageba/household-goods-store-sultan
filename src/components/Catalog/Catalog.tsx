@@ -7,7 +7,7 @@ import Pagination from '../Pagination/Pagination'
 import {FilterTypes,} from '../../types/filter'
 
 interface CatalogProps {
-  selectedType: FilterTypes | null
+  selectedType: FilterTypes[]
   setSelectedType: (str: string) => void
   selectedMinPrice: string
   setSelectedMinPrice: Dispatch<SetStateAction<string>>

@@ -1,8 +1,64 @@
+@use "src/sass/abstracts/functions";
+
 .path {
-  display: flex;
-  align-items: center;
   margin-top: 44px;
   margin-bottom: 50px;
+
+  @media (max-width: 992px) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 767px) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__full {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+
+  &__backButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--price-range-input-color);
+    margin-right: 5px;
+
+    svg {
+      width: 4px;
+      height: 8px;
+      path {
+        fill: var(--sub-text-color);
+      }
+    }
+  }
+
+  &__back {
+    display: none;
+    align-items: center;
+
+    @media (max-width: 992px) {
+      display: flex;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: functions.toRem(10);
+      line-height: 120%;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sub-text-color);
+    }
+  }
 
   &__line {
     height: 16px;
