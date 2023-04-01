@@ -1,0 +1,18 @@
+@use "src/sass/abstracts/functions";
+
+.productSize {
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 8px;
+    height: 15px;
+  }
+
+  span {
+    font-weight: 400;
+    font-size: functions.toRem(12);
+    line-height: 130%;
+    color: var(--sub-text-color);
+  }
+}

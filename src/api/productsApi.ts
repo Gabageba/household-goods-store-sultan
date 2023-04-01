@@ -11,3 +11,16 @@ export const getProducts = async (): Promise<IProduct[]>=> {
   }
   return JSON.parse(localData)
 }
+
+export const getProduct = async (barcode: string): Promise<IProduct | null>=> {
+  let localData = localStorage.getItem(PRODUCTS_LOCAL_STORAGE)
+  let result: IProduct | null = null
+  if (localData) {
+    JSON.parse(localData).forEach((product: IProduct) => {
+      if (product.barcode === barcode) {
+        result = product
+      }
+    })
+  }
+  return result
+}

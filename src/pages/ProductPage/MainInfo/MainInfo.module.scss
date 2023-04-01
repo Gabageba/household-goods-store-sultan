@@ -1,0 +1,88 @@
+@use "src/sass/abstracts/functions";
+
+.stock {
+  font-weight: 500;
+  line-height: 130%;
+  color: var(--in-stock-text-color);
+  margin-bottom: 10px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: functions.toRem(30);
+  line-height: 150%;
+  margin-bottom: 10px;
+  color: var(--main-text-color);
+
+  &__brand {
+    font-weight: 800;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 25px;
+
+  &__price {
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 130%;
+    color: var(--main-text-color);
+  }
+
+  &__inBasket {
+    padding:  21px 40px;
+    background-color: var(--button-bg-color);
+    display: flex;
+    align-items: center;
+    color: var(--button-text-color);
+    border-radius: 100px;
+
+
+    svg {
+      height: 23px;
+      width: 23px;
+      path {
+        fill: var(--button-text-color);
+      }
+    }
+  }
+}
+
+.links {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  color: var(--sub-text-color);
+
+  &__priceList {
+    display: flex;
+    gap: 10px;
+    font-weight: 700;
+    line-height: 17px;
+
+    svg {
+      path {
+        fill: var(--sub-text-color);
+      }
+    }
+  }
+
+  div {
+    max-width: 316px;
+    padding-left: 27px;
+    padding-right: 27px;
+    box-shadow: 0 20px 70px -14px rgba(43, 28, 1, 0.04);
+    border-radius: 10px;
+    height: 79px;
+    display: flex;
+    align-items: center;
+
+    span {
+      text-align: center;
+    }
+
+  }
+}

@@ -1,0 +1,30 @@
+@use "src/sass/abstracts/functions";
+
+.productPage {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+
+  &__subInfo {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    font-weight: 300;
+    font-size: functions.toRem(12);
+    line-height: 150%;
+    color: var(--sub-text-color);
+  }
+
+  &__line {
+    width: 270px;
+    border-bottom: 1px dashed var(--line-color);
+    opacity: 0.3;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

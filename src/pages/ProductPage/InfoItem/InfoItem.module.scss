@@ -1,0 +1,13 @@
+.infoItem {
+  line-height: 150%;
+
+  &__title {
+    font-weight: 300;
+    color: var(--sub-text-color);
+  }
+
+  &__info {
+    color: var(--main-text-color);
+    font-weight: 500;
+  }
+}

@@ -7,6 +7,7 @@ import noImage from '../../assets/img/no-image.jpg'
 import {formatPrice} from '../../utils/functions'
 import {useNavigate} from 'react-router-dom'
 import {COSMETICS_HYGIENE_ROUTE} from '../../utils/consts'
+import ProductSize from '../ProductSize/ProductSize'
 
 interface ProductCardProps {
   product: IProduct
@@ -20,10 +21,7 @@ const ProductCard: FC<ProductCardProps> = ({product}) => {
     <div className={styles.productCard}>
       <div>
         <img width={'100%'} src={product.url || noImage} alt={product.brand}/>
-        <div className={styles.productCard__size}>
-          {product.sizeType === 'volume' ? <VolumeIcon/> : <WeightIcon/>}
-          <span>{product.quantity ? `${product.quantity}X${product.size}` : product.size} {product.sizeType === 'volume' ? 'мл' : 'г'}</span>
-        </div>
+        <ProductSize sizeType={product.sizeType} size={product.size}/>
         <div className={styles.productCard__name} onClick={() => navigate(`${COSMETICS_HYGIENE_ROUTE}/${product.barcode}`)}><span>{product.brand}</span> {product.name}</div>
         <div className={styles.subInfo}>
           <span className={styles.subInfo__title}>Штрихкод: </span>

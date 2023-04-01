@@ -1,13 +1,14 @@
 import React, {FC} from 'react'
 import styles from './BasketCard.module.scss'
 import {IProduct} from '../../types/products'
-import {VolumeIcon, WeightIcon} from '../svg'
 import deleteIcon from '../../assets/icons/delete.svg'
 import noImage from '../../assets/img/no-image.jpg'
 import {useActions} from '../../hooks/useActions'
 import {formatPrice} from '../../utils/functions'
 import {COSMETICS_HYGIENE_ROUTE} from '../../utils/consts'
 import {useNavigate} from 'react-router-dom'
+import ProductSize from '../ProductSize/ProductSize'
+import ProductCounter from '../ProductCounter/ProductCounter'
 
 interface BasketCardProps {
   product: IProduct
@@ -23,21 +24,14 @@ const BasketCard: FC<BasketCardProps> = ({product, amount}) => {
       <div className={styles.basketCard__info}>
         <img width={280} src={product.url || noImage} alt={product.brand}/>
         <div className={styles.info}>
-          <div className={styles.info__size}>
-            {product.sizeType === 'volume' ? <VolumeIcon/> : <WeightIcon/>}
-            <span>{product.size}</span>
-          </div>
+          <ProductSize sizeType={product.sizeType} size={product.size}/>
           <h2 onClick={() => navigate(`${COSMETICS_HYGIENE_ROUTE}/${product.barcode}`)}>{product.name}</h2>
           <div className={styles.info__description}>{product.description}</div>
         </div>
       </div>
       <div className={styles.basketCard__buttons}>
         <div className={`dashedLineVert ${styles.basketCard__line}`}></div>
-        <div className={styles.amount}>
-          <div className={styles.amount__button} onClick={() => decreaseBasketItemAmount(product)}>-</div>
-          <div>{amount}</div>
-          <div className={styles.amount__button} onClick={() => addBasketItem(product)}>+</div>
-        </div>
+        <ProductCounter add={() => addBasketItem(product)} decrease={() => decreaseBasketItemAmount(product)} counter={amount}/>
         <div className={`dashedLineVert ${styles.basketCard__line}`}></div>
         <div className={styles.basketCard__price}>{formatPrice(product.price)} ₸</div>
         <div className={`dashedLineVert ${styles.basketCard__line}`}></div>

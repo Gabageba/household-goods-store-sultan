@@ -28,7 +28,7 @@ const Basket = () => {
             ? <div className={styles.basket__items}>
               {
                 basketItems.map((item, index) =>
-                  <div>
+                  <div key={index}>
                     {index === 0 && <div className={`${styles.basket__underline}`}></div>}
                     <BasketCard key={item.product.id} product={item.product} amount={item.amount}/>
                     <div className={`${styles.basket__underline}`}></div>
