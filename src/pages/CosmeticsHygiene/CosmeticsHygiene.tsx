@@ -99,7 +99,9 @@ const CosmeticsHygiene = () => {
         <Paths paths={paths}/>
         <div className={styles.cosmeticsHygiene}>
           <h1>Косметика и гигиена</h1>
-          <Sort currentSort={currentSort} setCurrentSort={setCurrentSort}/>
+          <div className={styles.cosmeticsHygiene__sort}>
+            <Sort currentSort={currentSort} setCurrentSort={setCurrentSort}/>
+          </div>
         </div>
         <TypeFilter types={COSMETICS_HYGIENE_TYPES}
                     selectedType={selectedTypeFilters}
@@ -115,6 +117,8 @@ const CosmeticsHygiene = () => {
                  setSelectedManufacturers={selectManufacturers}
                  clearFilters={clearFilter}
                  selectedManufacturers={selectedManufacturers}
+                 currentSort={currentSort}
+                 setCurrentSort={setCurrentSort}
         />
       </ContentWrapper>
       <Footer/>

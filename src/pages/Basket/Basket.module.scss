@@ -4,10 +4,24 @@
 
   &__items {
     margin-top: 50px;
+
+    @media (max-width: 767px) {
+      margin-top: 20px;
+    }
   }
 
   &__button {
     padding: 21px 37px;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 25px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
   }
 
   &__totalPrice {
@@ -22,6 +36,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 767px) {
+      flex-direction: column-reverse;
+    }
   }
 
   &__underline {
@@ -34,5 +52,10 @@
     margin-top: 60px;
     margin-bottom: 60px;
     font-size: functions.toRem(20);
+
+    @media (max-width: 767px) {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
   }
 }

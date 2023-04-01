@@ -20,14 +20,16 @@ const BasketCard: FC<BasketCardProps> = ({product, amount}) => {
 
   return (
     <div className={styles.basketCard}>
-      <img width={280} src={product.url || noImage} alt={product.brand}/>
-      <div className={styles.info}>
-        <div className={styles.info__size}>
-          {product.sizeType === 'volume' ? <VolumeIcon/> : <WeightIcon/>}
-          <span>{product.size}</span>
+      <div className={styles.basketCard__info}>
+        <img width={280} src={product.url || noImage} alt={product.brand}/>
+        <div className={styles.info}>
+          <div className={styles.info__size}>
+            {product.sizeType === 'volume' ? <VolumeIcon/> : <WeightIcon/>}
+            <span>{product.size}</span>
+          </div>
+          <h2 onClick={() => navigate(`${COSMETICS_HYGIENE_ROUTE}/${product.barcode}`)}>{product.name}</h2>
+          <div className={styles.info__description}>{product.description}</div>
         </div>
-        <h2 onClick={() => navigate(`${COSMETICS_HYGIENE_ROUTE}/${product.barcode}`)}>{product.name}</h2>
-        <div className={styles.info__description}>{product.description}</div>
       </div>
       <div className={styles.basketCard__buttons}>
         <div className={`dashedLineVert ${styles.basketCard__line}`}></div>

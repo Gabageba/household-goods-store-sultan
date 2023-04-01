@@ -5,6 +5,7 @@ import {useTypedSelector} from '../../hooks/useTypedSelector'
 import ProductCard from '../ProductCard/ProductCard'
 import Pagination from '../Pagination/Pagination'
 import {FilterTypes,} from '../../types/filter'
+import {ISort} from '../../types/sort'
 
 interface CatalogProps {
   selectedType: FilterTypes[]
@@ -17,6 +18,8 @@ interface CatalogProps {
   selectedManufacturers: string[]
   fetchFilter: () => void
   clearFilters: () => void
+  currentSort: ISort
+  setCurrentSort: Dispatch<SetStateAction<ISort>>
 }
 
 const Catalog: FC<CatalogProps> = ({
@@ -29,7 +32,9 @@ const Catalog: FC<CatalogProps> = ({
                                      setSelectedManufacturers,
                                      fetchFilter,
                                      clearFilters,
-                                     selectedManufacturers
+                                     selectedManufacturers,
+                                     currentSort,
+                                     setCurrentSort
                                    }) => {
   const {products} = useTypedSelector(state => state.products)
 
@@ -45,17 +50,19 @@ const Catalog: FC<CatalogProps> = ({
                fetchFilter={fetchFilter}
                clearFilters={clearFilters}
                selectedManufacturers={selectedManufacturers}
+               currentSort={currentSort}
+               setCurrentSort={setCurrentSort}
       />
       <div className={styles.catalog__content}>
         {
           products.length > 0
             ? <div className={styles.catalog__cards}>
-            {
-              products.map(product =>
-                <ProductCard key={product.id} product={product}/>
-              )
-            }
-          </div>
+              {
+                products.map(product =>
+                  <ProductCard key={product.id} product={product}/>
+                )
+              }
+            </div>
             : <div className={styles.catalog__notFound}>Извините, по вашему запросу ничего не найдено</div>
         }
 

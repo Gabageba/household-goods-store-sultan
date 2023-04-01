@@ -8,6 +8,8 @@ import Types from './Types/Types'
 import {COSMETICS_HYGIENE_TYPES} from '../../utils/consts'
 import {FilterTypes} from '../../types/filter'
 import {PaginationArrowIcon} from '../svg'
+import Sort from '../Sort/Sort'
+import {ISort} from '../../types/sort'
 
 interface FiltersProps {
   selectedType: FilterTypes[]
@@ -20,6 +22,8 @@ interface FiltersProps {
   setSelectedManufacturers: (e: React.ChangeEvent<HTMLInputElement>) => void
   fetchFilter: () => void
   clearFilters: () => void
+  currentSort: ISort
+  setCurrentSort: Dispatch<SetStateAction<ISort>>
 }
 
 const Filters: FC<FiltersProps> = ({
@@ -32,7 +36,9 @@ const Filters: FC<FiltersProps> = ({
                                      setSelectedManufacturers,
                                      fetchFilter,
                                      clearFilters,
-                                     selectedManufacturers
+                                     selectedManufacturers,
+  currentSort,
+  setCurrentSort
                                    }) => {
   const {productsType} = useTypedSelector(state => state.products)
   const [isFilterShow, setIsFilterShow] = useState<boolean>(false)
@@ -64,6 +70,9 @@ const Filters: FC<FiltersProps> = ({
         </div>
       </div>
       <Types types={COSMETICS_HYGIENE_TYPES} setSelectedType={setSelectedType} selectedType={selectedType}/>
+      <div className={styles.filters__sort}>
+        <Sort currentSort={currentSort} setCurrentSort={setCurrentSort}/>
+      </div>
     </div>
   )
 }
