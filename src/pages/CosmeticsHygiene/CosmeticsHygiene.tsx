@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper'
 import Paths from '../../components/Paths/Paths'
 import {COSMETICS_HYGIENE_ROUTE, COSMETICS_HYGIENE_TYPES, SORT_TYPES} from '../../utils/consts'

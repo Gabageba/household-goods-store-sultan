@@ -6,8 +6,8 @@ import {BASKET_ROUTE} from '../../utils/consts'
 import BasketCard from '../../components/BasketCard/BasketCard'
 import Footer from '../../components/Footer/Footer'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
-import {useActions} from '../../hooks/useActions'
 import styles from './Basket.module.scss'
+import {formatPrice} from '../../utils/functions'
 
 const Basket = () => {
   const paths: IPaths[] = [
@@ -17,11 +17,6 @@ const Basket = () => {
     }
   ]
   const {basketItems, totalPrice} = useTypedSelector(state => state.basket)
-  const {fetchBasketItems} = useActions()
-
-  useEffect(() => {
-    fetchBasketItems()
-  }, [])
 
   return (
     <div className={`pageContent ${styles.basket}`}>
@@ -30,15 +25,19 @@ const Basket = () => {
         <h1>Корзина</h1>
         {
           basketItems.length > 0
-            ? <div>
+            ? <div className={styles.basket__items}>
               {
-                basketItems.map(item =>
-                  <BasketCard key={item.product.id} product={item.product} amount={item.amount}/>
+                basketItems.map((item, index) =>
+                  <div>
+                    {index === 0 && <div className={`${styles.basket__underline}`}></div>}
+                    <BasketCard key={item.product.id} product={item.product} amount={item.amount}/>
+                    <div className={`${styles.basket__underline}`}></div>
+                  </div>
                 )
               }
-              <div>
-                <div className="button">Оформить заказ</div>
-                <div>{totalPrice} ₸</div>
+              <div className={styles.basket__purchase}>
+                <div className={`button ${styles.basket__button}`}>Оформить заказ</div>
+                <div className={styles.basket__totalPrice}>{formatPrice(totalPrice) } ₸</div>
               </div>
             </div>
             : <div className={styles.basket__notFound}>Ваша корзина пуста</div>

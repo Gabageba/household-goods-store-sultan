@@ -3,6 +3,10 @@ import styles from './ProductCard.module.scss'
 import {IProduct} from '../../types/products'
 import {BasketIcon, VolumeIcon, WeightIcon} from '../svg'
 import {useActions} from '../../hooks/useActions'
+import noImage from '../../assets/img/no-image.jpg'
+import {formatPrice} from '../../utils/functions'
+import {useNavigate} from 'react-router-dom'
+import {COSMETICS_HYGIENE_ROUTE} from '../../utils/consts'
 
 interface ProductCardProps {
   product: IProduct
@@ -10,20 +14,17 @@ interface ProductCardProps {
 
 const ProductCard: FC<ProductCardProps> = ({product}) => {
   const {addBasketItem} = useActions()
-
-  const formatPrice = (price: number): string => {
-    return new Intl.NumberFormat('ru-RU').format(price)
-  }
+  const navigate = useNavigate()
 
   return (
     <div className={styles.productCard}>
       <div>
-        <img width={'100%'} src={product.url} alt={product.brand}/>
+        <img width={'100%'} src={product.url || noImage} alt={product.brand}/>
         <div className={styles.productCard__size}>
           {product.sizeType === 'volume' ? <VolumeIcon/> : <WeightIcon/>}
           <span>{product.quantity ? `${product.quantity}X${product.size}` : product.size} {product.sizeType === 'volume' ? 'мл' : 'г'}</span>
         </div>
-        <div className={styles.productCard__name}><span>{product.brand}</span> {product.name}</div>
+        <div className={styles.productCard__name} onClick={() => navigate(`${COSMETICS_HYGIENE_ROUTE}/${product.barcode}`)}><span>{product.brand}</span> {product.name}</div>
         <div className={styles.subInfo}>
           <span className={styles.subInfo__title}>Штрихкод: </span>
           <span className={styles.subInfo__info}>{product.barcode}</span>

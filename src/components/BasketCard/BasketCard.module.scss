@@ -69,6 +69,7 @@
     -webkit-line-clamp: 2; // количество строк
     -webkit-box-orient: vertical;
     overflow: hidden;
+    cursor: pointer;
   }
 
   &__description {

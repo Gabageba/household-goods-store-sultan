@@ -6,6 +6,7 @@ import basket from '../../../../assets/icons/basket.svg'
 import {useNavigate} from 'react-router-dom'
 import {BASKET_ROUTE} from '../../../../utils/consts'
 import {useTypedSelector} from '../../../../hooks/useTypedSelector'
+import {formatPrice} from '../../../../utils/functions'
 
 const SubBlock: FC = () => {
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ const SubBlock: FC = () => {
         </div>
         <div className={styles.subBlock__price}>
           <div className={styles.subBlock__price_title}>Корзина</div>
-          <div className={styles.subBlock__price_subTitle}>{totalPrice} ₸</div>
+          <div className={styles.subBlock__price_subTitle}>{formatPrice(totalPrice)} ₸</div>
         </div>
       </div>
     </div>
