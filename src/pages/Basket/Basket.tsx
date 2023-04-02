@@ -10,18 +10,12 @@ import styles from './Basket.module.scss'
 import {formatPrice} from '../../utils/functions'
 
 const Basket = () => {
-  const paths: IPaths[] = [
-    {
-      name: 'Корзина',
-      link: BASKET_ROUTE
-    }
-  ]
   const {basketItems, totalPrice} = useTypedSelector(state => state.basket)
 
   return (
     <div className={`pageContent ${styles.basket}`}>
       <ContentWrapper>
-        <Paths paths={paths}/>
+        <Paths/>
         <h1>Корзина</h1>
         {
           basketItems.length > 0

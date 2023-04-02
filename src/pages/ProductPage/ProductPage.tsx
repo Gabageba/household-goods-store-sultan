@@ -11,22 +11,14 @@ import MainInfo from './MainInfo/MainInfo'
 import InfoItem from './InfoItem/InfoItem'
 import HiddenInfo from './HiddenInfo/HiddenInfo'
 import Footer from '../../components/Footer/Footer'
+import {useActions} from '../../hooks/useActions'
 
 const ProductPage = () => {
   const [product, setProduct] = useState<IProduct>()
   const [counter, setCounter] = useState<number>(1)
+  const {addBasketItem} = useActions()
   const {barcode} = useParams()
   const url = `${window.location.protocol}//${window.location.host}/`
-  const paths: IPaths[] = [
-    {
-      name: 'Косметика и гигиена',
-      link: COSMETICS_HYGIENE_ROUTE
-    },
-    {
-      name: product?.name || '',
-      link: `${COSMETICS_HYGIENE_ROUTE}/${product?.barcode}`
-    }
-  ]
 
   useEffect(() => {
     if (barcode) {
@@ -41,14 +33,14 @@ const ProductPage = () => {
   return (
     <div className={'pageContent'}>
       <ContentWrapper>
-        <Paths paths={paths}/>
+        <Paths/>
         {
           product &&
           <div className={styles.productPage}>
             <img className={styles.productPage__image}  src={url + product.url} alt={product.name}/>
             <div>
               <MainInfo brand={product.brand} name={product.name} price={product.price} setCounter={setCounter}
-                        counter={counter} sizeType={product.sizeType} size={product.size}/>
+                        counter={counter} sizeType={product.sizeType} size={product.size} buttonClickHandler={() => addBasketItem(product, counter)}/>
               <div className={styles.productPage__subInfo}>
                 <InfoItem title={'Производитель'} info={product.manufacturer}/>
                 <InfoItem title={'Бренд'} info={product.brand}/>

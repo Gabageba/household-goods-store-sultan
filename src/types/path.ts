@@ -1,4 +1,4 @@
 export interface IPaths {
-  name: string,
+  name: string | undefined,
   link: string
 }

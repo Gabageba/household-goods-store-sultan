@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import styles from './ProductCard.module.scss'
 import {IProduct} from '../../types/products'
-import {BasketIcon, VolumeIcon, WeightIcon} from '../svg'
+import {BasketIcon} from '../svg'
 import {useActions} from '../../hooks/useActions'
 import noImage from '../../assets/img/no-image.jpg'
 import {formatPrice} from '../../utils/functions'
@@ -14,8 +14,9 @@ interface ProductCardProps {
 }
 
 const ProductCard: FC<ProductCardProps> = ({product}) => {
-  const {addBasketItem} = useActions()
   const navigate = useNavigate()
+
+  const {addBasketItem} = useActions()
 
   return (
     <div className={styles.productCard}>

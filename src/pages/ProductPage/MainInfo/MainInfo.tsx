@@ -14,9 +14,10 @@ interface MainInfoProps {
   counter: number
   sizeType: string
   size: number
+  buttonClickHandler: () => void
 }
 
-const MainInfo: FC<MainInfoProps> = ({counter, setCounter, price, brand, name, size, sizeType}) => {
+const MainInfo: FC<MainInfoProps> = ({counter, setCounter, price, brand, name, size, sizeType, buttonClickHandler}) => {
   return (
     <>
       <div className={styles.stock}>В наличии</div>
@@ -34,7 +35,7 @@ const MainInfo: FC<MainInfoProps> = ({counter, setCounter, price, brand, name, s
                           decrease={() => setCounter(prevState => prevState - 1)} counter={counter}/>
         </div>
         <div className={styles.buttons__block}>
-          <div className={`button ${styles.buttons__inBasket}`}>
+          <div className={`button ${styles.buttons__inBasket}`} onClick={buttonClickHandler}>
             <span>В корзину</span>
             <BasketIcon/>
           </div>

@@ -24,13 +24,6 @@ const CosmeticsHygiene = () => {
   const {page, limit, isLoading} = useTypedSelector(state => state.products)
   const {setProductsPage} = useActions()
 
-  const paths: IPaths[] = [
-    {
-      name: 'Косметика и гигиена',
-      link: COSMETICS_HYGIENE_ROUTE
-    }
-  ]
-
   const selectManufacturers = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       setSelectedManufacturers(prevState => {
@@ -96,7 +89,7 @@ const CosmeticsHygiene = () => {
   return (
     <div className={'pageContent'}>
       <ContentWrapper>
-        <Paths paths={paths}/>
+        <Paths/>
         <div className={styles.cosmeticsHygiene}>
           <h1>Косметика и гигиена</h1>
           <div className={styles.cosmeticsHygiene__sort}>
