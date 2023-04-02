@@ -8,6 +8,10 @@
   line-height: 150%;
   color: var(--footer-text-color);
 
+  @media (max-width: 767px) {
+    padding-top: 15px;
+  }
+
   &__column {
     @media (max-width: 1200px) {
       display: none;
@@ -75,11 +79,19 @@
     align-items: center;
     justify-content: space-between;
 
+    svg {
+      @media (max-width: 767px) {
+        width: 97px;
+      }
+    }
+
     .footer__priceList {
       display: none;
       margin-top: 0;
+
       @media (max-width: 992px) {
         display: flex;
+        padding: 12px 30px;
       }
     }
   }
@@ -91,6 +103,10 @@
 
     @media (max-width: 992px) {
       width: 100%;
+    }
+
+    @media (max-width: 767px) {
+      font-size: functions.toRem(12);
     }
   }
 
@@ -153,11 +169,14 @@
   &__block {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    gap: 30px;
 
     .socialNetworks {
       display: none;
 
+      @media (max-width: 992px) {
+        display: block;
+      }
     }
   }
 

@@ -5,6 +5,22 @@
   gap: 40px;
   align-items: flex-start;
 
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
+
+  &__image {
+    width: 664px;
+
+    @media (max-width: 1370px) {
+      width: 550px;
+    }
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+  }
+
   &__subInfo {
     margin-top: 35px;
     display: flex;

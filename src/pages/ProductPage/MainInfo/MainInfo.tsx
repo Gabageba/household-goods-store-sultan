@@ -24,20 +24,28 @@ const MainInfo: FC<MainInfoProps> = ({counter, setCounter, price, brand, name, s
         <span className={styles.title__brand}>{brand} </span>
         <span>{name}</span>
       </div>
-      <ProductSize sizeType={sizeType} size={size}/>
+      <div className={styles.productSize}>
+        <ProductSize sizeType={sizeType} size={size}/>
+      </div>
       <div className={styles.buttons}>
-        <div className={styles.buttons__price}>{formatPrice(price)} ₸</div>
-        <ProductCounter add={() => setCounter(prevState => prevState + 1)}
-                        decrease={() => setCounter(prevState => prevState - 1)} counter={counter}/>
-        <div className={`button ${styles.buttons__inBasket}`}>
-          <span>В корзину</span>
-          <BasketIcon/>
+        <div className={styles.buttons__block}>
+          <div className={styles.buttons__price}>{formatPrice(price)} ₸</div>
+          <ProductCounter add={() => setCounter(prevState => prevState + 1)}
+                          decrease={() => setCounter(prevState => prevState - 1)} counter={counter}/>
+        </div>
+        <div className={styles.buttons__block}>
+          <div className={`button ${styles.buttons__inBasket}`}>
+            <span>В корзину</span>
+            <BasketIcon/>
+          </div>
+          <div className={`${styles.links__item} ${styles.links__share}`}><img src={share} alt="share"/></div>
         </div>
       </div>
       <div className={styles.links}>
-        <div><img src={share} alt="share"/></div>
-        <div><span>При покупке от <strong>10 000 ₸</strong> бесплатная доставка по Кокчетаву и области</span></div>
-        <div className={styles.links__priceList}>
+        <div className={`${styles.links__item} ${styles.links__share}`}><img src={share} alt="share"/></div>
+        <div className={styles.links__item}><span>При покупке от <strong>10 000 ₸</strong> бесплатная доставка по Кокчетаву и области</span>
+        </div>
+        <div className={`${styles.links__item} ${styles.links__priceList}`}>
           <span>Прайс-лист</span>
           <DownloadSvg/>
         </div>

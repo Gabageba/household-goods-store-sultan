@@ -23,7 +23,6 @@ const Footer: FC = () => {
             </div>
             <div className={styles.company__about}>
               Компания «Султан» — снабжаем розничные магазины товарами
-              <br/>
               "под ключ" в Кокчетаве и Акмолинской области
             </div>
             <div className={styles.company__subscribe}>Подпишись на скидки и акции</div>

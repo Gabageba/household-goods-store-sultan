@@ -7,12 +7,22 @@
   margin-bottom: 10px;
 }
 
+.productSize {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
 .title {
   font-weight: 400;
   font-size: functions.toRem(30);
   line-height: 150%;
   margin-bottom: 10px;
   color: var(--main-text-color);
+
+  @media (max-width: 767px) {
+    font-size: functions.toRem(16);
+  }
 
   &__brand {
     font-weight: 800;
@@ -25,11 +35,41 @@
   gap: 40px;
   margin-top: 25px;
 
+  @media (max-width: 767px) {
+    gap: 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+
+  .links__share {
+    display: none;
+
+    @media (max-width: 767px) {
+      display: flex !important;
+    }
+  }
+
+  &__block {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+
   &__price {
     font-weight: 800;
     font-size: 30px;
     line-height: 130%;
     color: var(--main-text-color);
+
+    @media (max-width: 767px) {
+      font-size: functions.toRem(20);
+    }
   }
 
   &__inBasket {
@@ -39,6 +79,11 @@
     align-items: center;
     color: var(--button-text-color);
     border-radius: 100px;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      justify-content: center;
+    }
 
 
     svg {
@@ -57,11 +102,16 @@
   margin-top: 20px;
   color: var(--sub-text-color);
 
+  @media (max-width: 767px) {
+  flex-direction: column;
+  }
+
   &__priceList {
     display: flex;
     gap: 10px;
     font-weight: 700;
     line-height: 17px;
+    cursor: pointer;
 
     svg {
       path {
@@ -70,7 +120,15 @@
     }
   }
 
-  div {
+  &__share {
+    cursor: pointer;
+
+    @media (max-width: 767px) {
+      display: none!important;
+    }
+  }
+
+  &__item {
     max-width: 316px;
     padding-left: 27px;
     padding-right: 27px;
@@ -83,6 +141,17 @@
     span {
       text-align: center;
     }
+  }
 
+  div {
+    @media (max-width: 767px) {
+      max-width: none;
+      width: 100%;
+      justify-content: center;
+      font-size: functions.toRem(12);
+      padding-left: 20px;
+      padding-right: 20px;
+      height: 77px;
+    }
   }
 }

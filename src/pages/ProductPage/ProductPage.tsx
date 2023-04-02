@@ -3,15 +3,10 @@ import {useParams} from 'react-router-dom'
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper'
 import {IProduct} from '../../types/products'
 import {getProduct,} from '../../api/productsApi'
-import ProductCounter from '../../components/ProductCounter/ProductCounter'
-import {BasketIcon, DownloadSvg} from '../../components/svg'
 import styles from './ProductsPage.module.scss'
 import {IPaths} from '../../types/path'
 import {COSMETICS_HYGIENE_ROUTE} from '../../utils/consts'
 import Paths from '../../components/Paths/Paths'
-import ProductSize from '../../components/ProductSize/ProductSize'
-import share from '../../assets/icons/share.svg'
-import {formatPrice} from '../../utils/functions'
 import MainInfo from './MainInfo/MainInfo'
 import InfoItem from './InfoItem/InfoItem'
 import HiddenInfo from './HiddenInfo/HiddenInfo'
@@ -50,7 +45,7 @@ const ProductPage = () => {
         {
           product &&
           <div className={styles.productPage}>
-            <img width={664} src={url + product.url} alt={product.name}/>
+            <img className={styles.productPage__image}  src={url + product.url} alt={product.name}/>
             <div>
               <MainInfo brand={product.brand} name={product.name} price={product.price} setCounter={setCounter}
                         counter={counter} sizeType={product.sizeType} size={product.size}/>
