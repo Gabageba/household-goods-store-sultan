@@ -3,6 +3,7 @@ import {ISort, SortTypesName, SortTypesPosition} from '../types/sort'
 
 export const COSMETICS_HYGIENE_ROUTE = '/cosmeticsHygiene'
 export const BASKET_ROUTE = '/basket'
+export const ADMIN_ROUTE = '/admin'
 
 export const SORT_TYPES: ISort[] = [
   {

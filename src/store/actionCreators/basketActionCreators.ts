@@ -116,3 +116,12 @@ export const fetchBasketItems = () => {
       })
   }
 }
+
+export const clearBasket = () => {
+  return (dispatch: Dispatch<BasketAction>) => {
+    localStorage.setItem(BASKET_LOCAL_STORAGE, '')
+    dispatch(setBasketItems([]))
+    dispatch(setBasketItemsTotalPrice(0))
+    dispatch(setBasketItemsTotalCount(0))
+  }
+}

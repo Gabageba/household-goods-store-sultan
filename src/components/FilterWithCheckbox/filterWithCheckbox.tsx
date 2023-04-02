@@ -50,8 +50,8 @@ const FilterWithCheckbox: FC<FilterWithCheckboxProps> = ({
             {
               manufacturers.map((manufacturer, index) =>
                 <CustomCheckbox key={index} name={manufacturer.name} count={manufacturer.count}
-                                setSelectedManufacturers={setSelectedManufacturers}
-                                selectedManufacturers={selectedManufacturers}/>
+                                setSelected={setSelectedManufacturers}
+                                selected={selectedManufacturers}/>
               )
             }
           </div>

@@ -1,19 +1,29 @@
-import React, {useEffect} from 'react'
+import React, { useState} from 'react'
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper'
 import Paths from '../../components/Paths/Paths'
-import {IPaths} from '../../types/path'
-import {BASKET_ROUTE} from '../../utils/consts'
 import BasketCard from '../../components/BasketCard/BasketCard'
 import Footer from '../../components/Footer/Footer'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import styles from './Basket.module.scss'
 import {formatPrice} from '../../utils/functions'
+import PopUpBlock from '../../components/PopUpBlock/PopUpBlock'
+import {useActions} from '../../hooks/useActions'
 
 const Basket = () => {
   const {basketItems, totalPrice} = useTypedSelector(state => state.basket)
+  const [isPopUpVisible, setIsPopUpVisible] = useState<boolean>(false)
+  const {clearBasket} = useActions()
+
+  const purchaseClickHandler = () => {
+    if (basketItems) {
+      setIsPopUpVisible(true)
+      clearBasket()
+    }
+  }
 
   return (
     <div className={`pageContent ${styles.basket}`}>
+      <PopUpBlock text={'Спасибо за покупку'} isVisible={isPopUpVisible} setIsVisible={setIsPopUpVisible}/>
       <ContentWrapper>
         <Paths/>
         <h1>Корзина</h1>
@@ -30,7 +40,7 @@ const Basket = () => {
                 )
               }
               <div className={styles.basket__purchase}>
-                <div className={`button ${styles.basket__button}`}>Оформить заказ</div>
+                <div className={`button ${styles.basket__button}`} onClick={purchaseClickHandler}>Оформить заказ</div>
                 <div className={styles.basket__totalPrice}>{formatPrice(totalPrice) } ₸</div>
               </div>
             </div>

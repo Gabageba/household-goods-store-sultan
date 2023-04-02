@@ -1,0 +1,63 @@
+.addCard {
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 62px) 1fr;
+  grid-gap: 10px;
+  grid-template-areas:
+  'url name sizeType'
+  'size barcode manufacturer'
+  'brand price careType'
+  'description description careType'
+;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    select {
+      cursor: pointer;
+
+      option {
+        border: none;
+      }
+    }
+  }
+
+  &__checkbox {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid var(--button-bg-color);
+    padding: 10px;
+    border-radius: 10px;
+    grid-gap: 5px;
+  }
+
+  &__textarea {
+    grid-area: description;
+    height: 100%;
+    textarea {
+      height: 100%;
+      resize: none;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  &__checkboxItem {
+    grid-area: careType;
+  }
+
+  &__input {
+    width: 100%;
+    border: 1px solid var(--button-bg-color);
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
