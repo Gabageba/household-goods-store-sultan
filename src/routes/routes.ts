@@ -21,7 +21,7 @@ export const publicRoutes: Routes[] = [
   {
     path: BASKET_ROUTE,
     Element: Basket,
-    name: 'Козина'
+    name: 'Корзина'
   },
   {
     path: ADMIN_ROUTE,

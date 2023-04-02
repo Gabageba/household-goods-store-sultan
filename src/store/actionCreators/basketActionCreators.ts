@@ -73,7 +73,7 @@ export const decreaseBasketItemAmount = (product: IProduct) => {
   }
 }
 
-export const deleteBasketItem = (product: IProduct) => {
+export const deleteBasketItem = (id: number) => {
   return (dispatch: Dispatch<BasketAction>) => {
     dispatch(setBasketItemsIsLoading(true))
     getBasketItems()
@@ -81,7 +81,7 @@ export const deleteBasketItem = (product: IProduct) => {
         let result = basketItems
         let foundIndex: number | null = null
         basketItems.forEach((item, index) => {
-          if (item.product.id === product.id) {
+          if (item.product.id === id) {
             foundIndex = index
           }
         })

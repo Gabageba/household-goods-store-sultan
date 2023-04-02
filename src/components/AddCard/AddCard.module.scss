@@ -1,6 +1,7 @@
 .addCard {
   margin-bottom: 30px;
   display: grid;
+  margin-top: 20px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 62px) 1fr;
   grid-gap: 10px;
@@ -8,8 +9,18 @@
   'url name sizeType'
   'size barcode manufacturer'
   'brand price careType'
-  'description description careType'
-;
+  'description description careType';
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+  'url name'
+  'sizeType size'
+  'barcode manufacturer'
+  'brand price '
+  'description description'
+  'careType careType';
+  }
 
   &__item {
     display: flex;
@@ -37,6 +48,7 @@
   &__textarea {
     grid-area: description;
     height: 100%;
+
     textarea {
       height: 100%;
       resize: none;

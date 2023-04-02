@@ -5,6 +5,7 @@ import AdminCard from '../../components/AdminCard/AdminCard'
 import {useActions} from '../../hooks/useActions'
 import Paths from '../../components/Paths/Paths'
 import AddCard from '../../components/AddCard/AddCard'
+import Footer from '../../components/Footer/Footer'
 
 const Admin = () => {
   const {fetchProducts} = useActions()
@@ -27,6 +28,7 @@ const Admin = () => {
           }
         </div>
       </ContentWrapper>
+      <Footer/>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react'
+import React, {Dispatch, FC, SetStateAction, useState} from 'react'
 import styles from './AddCard.module.scss'
 import CustomCheckbox from '../CustomCheckbox/CustomCheckbox'
 import {COSMETICS_HYGIENE_TYPES} from '../../utils/consts'
@@ -8,9 +8,10 @@ import {IProduct} from '../../types/products'
 
 interface AddCardProps {
   product?: IProduct
+  setIsEdit?: Dispatch<SetStateAction<boolean>>
 }
 
-const AddCard: FC<AddCardProps> = ({product}) => {
+const AddCard: FC<AddCardProps> = ({product, setIsEdit}) => {
   const [isErrorVisible, setIsErrorVisible] = useState<boolean>(false)
   const [url, setUrl] = useState<string>(product?.url || '')
   const [name, setName] = useState<string>(product?.name || '')
@@ -22,7 +23,7 @@ const AddCard: FC<AddCardProps> = ({product}) => {
   const [price, setPrice] = useState<number>(product?.price || 0)
   const [careType, setCareType] = useState<string[]>(product?.careType || [])
   const [description, setDescription] = useState<string>(product?.description || '')
-  const {addProduct} = useActions()
+  const {addProduct, editProduct} = useActions()
 
   const selectCareType = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
@@ -51,13 +52,24 @@ const AddCard: FC<AddCardProps> = ({product}) => {
     setDescription('')
   }
 
-  const saveClickHandler = () => {
+  const addCardHandler = () => {
     if (!url || !name || !sizeType || !size || !barcode || !manufacturer || !brand || !price || careType.length === 0 || !description) {
       setIsErrorVisible(true)
       return
     }
     addProduct(url, name, sizeType, size, manufacturer, barcode, brand, price, careType, description)
     clear()
+  }
+
+  const saveEditCardHandler = () => {
+    if (!url || !name || !sizeType || !size || !barcode || !manufacturer || !brand || !price || careType.length === 0 || !description) {
+      setIsErrorVisible(true)
+    }
+    editProduct(product!.id, url, name, sizeType, size, manufacturer, barcode, brand, price, careType, description)
+    if (setIsEdit) {
+      setIsEdit(false)
+    }
+
   }
 
   return (
@@ -126,7 +138,7 @@ const AddCard: FC<AddCardProps> = ({product}) => {
                   value={description}
                   onChange={e => setDescription(e.target.value)}/>
       </div>
-      <div className={`button ${styles.addCard__button}`} onClick={saveClickHandler}>Сохранить</div>
+      <div className={`button ${styles.addCard__button}`} onClick={product ? saveEditCardHandler : addCardHandler}>Сохранить</div>
     </div>
   )
 }

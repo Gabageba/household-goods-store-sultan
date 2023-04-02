@@ -5,6 +5,9 @@ import {getProducts} from '../../api/productsApi'
 import {ISort, SortTypesName, SortTypesPosition} from '../../types/sort'
 import {FilterTypes} from '../../types/filter'
 import {BASKET_LOCAL_STORAGE, PRODUCTS_LOCAL_STORAGE} from '../../utils/consts'
+import {deleteBasketItem} from './basketActionCreators'
+import {getBasketItems} from '../../api/basketApi'
+import {setBasketItems} from '../reducers/basketReducer'
 
 interface filters {
   types: FilterTypes[],
@@ -168,5 +171,65 @@ export const addProduct = (url: string, name: string, sizeType: string, size: nu
       .finally(() => dispatch(setProductsIsLoading(false)))
   }
 }
+
+export const editProduct = (id: number, url: string, name: string, sizeType: string, size: number, manufacturer: string, barcode: string, brand: string, price: number, careType: string[], description: string) => {
+  return (dispatch: Dispatch<ProductsAction>) => {
+    dispatch(setProductsIsLoading(true))
+    getProducts().then(products => {
+      const newProduct: IProduct = {
+        id,
+        url,
+        name,
+        barcode,
+        size,
+        brand,
+        manufacturer,
+        sizeType,
+        price,
+        careType,
+        description,
+      }
+      const result = products.map(product => {
+        if (product.id === newProduct.id) {
+          return newProduct
+        }
+        return product
+      })
+      localStorage.setItem(PRODUCTS_LOCAL_STORAGE, JSON.stringify(result))
+      dispatch(setProducts(result))
+      dispatch(setProductsTotalCount(result.length))
+      dispatch(setProductsTypes(getProductsTypes(result)))
+    }).catch(e => {
+      console.error(e)
+    })
+      .finally(() => dispatch(setProductsIsLoading(false)))
+  }
+}
+
+export const deleteProduct = (id: number) => {
+  return (dispatch: Dispatch<ProductsAction>) => {
+    dispatch(setProductsIsLoading(true))
+    getProducts().then(products => {
+      let result = products
+      let foundIndex: number | null = null
+      products.forEach((item, index) => {
+        if (item.id === id) {
+          foundIndex = index
+        }
+      })
+      if (foundIndex || foundIndex === 0) {
+        result.splice(foundIndex, 1)
+      }
+      localStorage.setItem(PRODUCTS_LOCAL_STORAGE, JSON.stringify(result))
+      dispatch(setProductsTotalCount(result.length))
+      dispatch(setProductsTypes(getProductsTypes(result)))
+      dispatch(setProducts(result))
+    }).catch(e => {
+      console.error(e)
+    })
+      .finally(() => dispatch(setProductsIsLoading(false)))
+  }
+}
+
 
 

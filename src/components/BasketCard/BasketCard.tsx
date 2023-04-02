@@ -35,7 +35,7 @@ const BasketCard: FC<BasketCardProps> = ({product, amount}) => {
         <div className={`dashedLineVert ${styles.basketCard__line}`}></div>
         <div className={styles.basketCard__price}>{formatPrice(product.price)} ₸</div>
         <div className={`dashedLineVert ${styles.basketCard__line}`}></div>
-        <div className={styles.basketCard__delete} onClick={() => deleteBasketItem(product)}><img src={deleteIcon} alt="delete"/></div>
+        <div className={styles.basketCard__delete} onClick={() => deleteBasketItem(product.id)}><img src={deleteIcon} alt="delete"/></div>
       </div>
     </div>
   )
