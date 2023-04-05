@@ -1,4 +1,4 @@
-import React from 'react'
+import {overflowVariant} from '../types/overflow'
 
 export const formatPrice = (price: number): string => {
   return new Intl.NumberFormat('ru-RU').format(price)
@@ -9,3 +9,11 @@ export const formatPrice = (price: number): string => {
 //     h1Ref.current.innerText = 'Hello world!';
 //   }
 // }
+
+
+export const setBodyOverflow = (value: overflowVariant): void => {
+  const bodyStyles = document.querySelector('body')?.style
+  if (bodyStyles) {
+    bodyStyles.overflow = value
+  }
+}
