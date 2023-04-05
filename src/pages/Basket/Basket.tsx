@@ -1,13 +1,15 @@
-import React, { useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import ContentWrapper from '../../components/ContentWrapper/ContentWrapper'
 import Paths from '../../components/Paths/Paths'
 import BasketCard from '../../components/BasketCard/BasketCard'
 import Footer from '../../components/Footer/Footer'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import styles from './Basket.module.scss'
-import {formatPrice} from '../../utils/functions'
+import {formatPrice, setBodyOverflow} from '../../utils/functions'
 import PopUpBlock from '../../components/PopUpBlock/PopUpBlock'
 import {useActions} from '../../hooks/useActions'
+import {overflowVariant} from '../../types/overflow'
+import OrderModalWindow from '../../components/Modals/OrderModalWindow/OrderModalWindow'
 
 const Basket = () => {
   const {basketItems, totalPrice} = useTypedSelector(state => state.basket)
@@ -21,9 +23,17 @@ const Basket = () => {
     }
   }
 
+  useEffect(() => {
+    if (isPopUpVisible) {
+      setBodyOverflow(overflowVariant.hidden)
+    } else {
+      setBodyOverflow(overflowVariant.auto)
+    }
+  }, [isPopUpVisible])
+
   return (
     <div className={`pageContent ${styles.basket}`}>
-      <PopUpBlock text={'Спасибо за покупку'} isVisible={isPopUpVisible} setIsVisible={setIsPopUpVisible}/>
+      {isPopUpVisible && <OrderModalWindow setModalActive={setIsPopUpVisible} title={'Спасибо за заказ'} text={'Наш менеджер свяжется с вами в ближайшее время'}/>}
       <ContentWrapper>
         <Paths/>
         <h1>Корзина</h1>
