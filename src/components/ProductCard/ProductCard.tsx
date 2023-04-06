@@ -23,7 +23,10 @@ const ProductCard: FC<ProductCardProps> = ({product}) => {
       <div>
         <img width={'100%'} src={product.url || noImage} alt={product.brand}/>
         <ProductSize sizeType={product.sizeType} size={product.size}/>
-        <div className={styles.productCard__name} onClick={() => navigate(`${COSMETICS_HYGIENE_ROUTE}/${product.barcode}`)}><span>{product.brand}</span> {product.name}</div>
+        <div className={styles.productCard__name}
+             onClick={() => navigate(`${COSMETICS_HYGIENE_ROUTE}/${product.barcode}`)}>
+          <span>{product.brand}</span> {product.name}
+        </div>
         <div className={styles.subInfo}>
           <span className={styles.subInfo__title}>Штрихкод: </span>
           <span className={styles.subInfo__info}>{product.barcode}</span>

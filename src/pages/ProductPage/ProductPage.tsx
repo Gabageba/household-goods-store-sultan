@@ -4,8 +4,6 @@ import ContentWrapper from '../../components/ContentWrapper/ContentWrapper'
 import {IProduct} from '../../types/products'
 import {getProduct,} from '../../api/productsApi'
 import styles from './ProductsPage.module.scss'
-import {IPaths} from '../../types/path'
-import {COSMETICS_HYGIENE_ROUTE} from '../../utils/consts'
 import Paths from '../../components/Paths/Paths'
 import MainInfo from './MainInfo/MainInfo'
 import InfoItem from './InfoItem/InfoItem'
@@ -37,10 +35,11 @@ const ProductPage = () => {
         {
           product &&
           <div className={styles.productPage}>
-            <img className={styles.productPage__image}  src={url + product.url} alt={product.name}/>
+            <img className={styles.productPage__image} src={url + product.url} alt={product.name}/>
             <div>
               <MainInfo brand={product.brand} name={product.name} price={product.price} setCounter={setCounter}
-                        counter={counter} sizeType={product.sizeType} size={product.size} buttonClickHandler={() => addBasketItem(product, counter)}/>
+                        counter={counter} sizeType={product.sizeType} size={product.size}
+                        buttonClickHandler={() => addBasketItem(product, counter)}/>
               <div className={styles.productPage__subInfo}>
                 <InfoItem title={'Производитель'} info={product.manufacturer}/>
                 <InfoItem title={'Бренд'} info={product.brand}/>
@@ -66,7 +65,7 @@ const ProductPage = () => {
           </div>
         }
       </ContentWrapper>
-      <Footer />
+      <Footer/>
     </div>
   )
 }

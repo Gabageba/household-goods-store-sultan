@@ -16,9 +16,17 @@ const Price: FC<PriceProps> = ({minPrice, setMinPrice, setMaxPrice, maxPrice}) =
         <span>₸</span>
       </div>
       <div className={styles.price__range}>
-        <input type={'number'} className={styles.price__range_input} placeholder={'мин'} onChange={e => setMinPrice(e.target.value)} value={minPrice}/>
+        <input type={'number'}
+               className={styles.price__range_input}
+               placeholder={'мин'}
+               onChange={e => setMinPrice(e.target.value)}
+               value={minPrice}/>
         <span>-</span>
-        <input type={'number'} className={styles.price__range_input} placeholder={'макс'} onChange={e => setMaxPrice(e.target.value)} value={maxPrice}/>
+        <input type={'number'}
+               className={styles.price__range_input}
+               placeholder={'макс'}
+               onChange={e => setMaxPrice(e.target.value)}
+               value={maxPrice}/>
       </div>
     </div>
   )

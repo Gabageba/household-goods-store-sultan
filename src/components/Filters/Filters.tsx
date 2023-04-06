@@ -37,8 +37,8 @@ const Filters: FC<FiltersProps> = ({
                                      fetchFilter,
                                      clearFilters,
                                      selectedManufacturers,
-  currentSort,
-  setCurrentSort
+                                     currentSort,
+                                     setCurrentSort
                                    }) => {
   const {productsType} = useTypedSelector(state => state.products)
   const [isFilterShow, setIsFilterShow] = useState<boolean>(false)

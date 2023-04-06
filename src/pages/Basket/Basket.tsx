@@ -6,7 +6,6 @@ import Footer from '../../components/Footer/Footer'
 import {useTypedSelector} from '../../hooks/useTypedSelector'
 import styles from './Basket.module.scss'
 import {formatPrice, setBodyOverflow} from '../../utils/functions'
-import PopUpBlock from '../../components/PopUpBlock/PopUpBlock'
 import {useActions} from '../../hooks/useActions'
 import {overflowVariant} from '../../types/overflow'
 import OrderModalWindow from '../../components/Modals/OrderModalWindow/OrderModalWindow'
@@ -33,7 +32,9 @@ const Basket = () => {
 
   return (
     <div className={`pageContent ${styles.basket}`}>
-      {isPopUpVisible && <OrderModalWindow setModalActive={setIsPopUpVisible} title={'Спасибо за заказ'} text={'Наш менеджер свяжется с вами в ближайшее время'}/>}
+      {isPopUpVisible && <OrderModalWindow setModalActive={setIsPopUpVisible}
+                                           title={'Спасибо за заказ'}
+                                           text={'Наш менеджер свяжется с вами в ближайшее время'}/>}
       <ContentWrapper>
         <Paths/>
         <h1>Корзина</h1>
@@ -51,7 +52,7 @@ const Basket = () => {
               }
               <div className={styles.basket__purchase}>
                 <div className={`button ${styles.basket__button}`} onClick={purchaseClickHandler}>Оформить заказ</div>
-                <div className={styles.basket__totalPrice}>{formatPrice(totalPrice) } ₸</div>
+                <div className={styles.basket__totalPrice}>{formatPrice(totalPrice)} ₸</div>
               </div>
             </div>
             : <div className={styles.basket__notFound}>Ваша корзина пуста</div>

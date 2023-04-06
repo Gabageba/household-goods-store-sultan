@@ -14,7 +14,7 @@ const SortItem: FC<SortItemProps> = ({name, handleClick, position}) => {
     <div className={`${styles.sortItem}`} onClick={handleClick}>
       <span>{name}</span>
       <div className={`${styles.sortItem__icon} ${position === SortTypesPosition.up ? styles.sortItem__icon_up : ''}`}>
-        <MoreIcon />
+        <MoreIcon/>
       </div>
     </div>
   )

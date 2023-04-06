@@ -10,24 +10,29 @@ const Pagination = () => {
 
   const getPages = (limit: number): number[] => {
     const pages: number[] = []
-      for (let i = 0; i < Math.ceil(totalCount / limit); i++) {
-          pages.push(i + 1)
-      }
+    for (let i = 0; i < Math.ceil(totalCount / limit); i++) {
+      pages.push(i + 1)
+    }
     return pages
   }
 
   return (
     <div className={styles.pagination}>
-      <div className={styles.pagination__arrow_left} onClick={() => setProductsPage(page - 1)}><PaginationArrowIcon/></div>
+      <div className={styles.pagination__arrow_left} onClick={() => setProductsPage(page - 1)}>
+        <PaginationArrowIcon/>
+      </div>
       {
         getPages(limit).map(pageItem =>
-          <div key={pageItem} className={`${styles.pagination__page} ${pageItem === page ? styles.pagination__page_active: ''}`}
+          <div key={pageItem}
+               className={`${styles.pagination__page} ${pageItem === page ? styles.pagination__page_active : ''}`}
                onClick={() => setProductsPage(pageItem)}>
             {pageItem}
           </div>
         )
       }
-      <div className={styles.pagination__arrow_right} onClick={() => setProductsPage(page + 1)}><PaginationArrowIcon/></div>
+      <div className={styles.pagination__arrow_right} onClick={() => setProductsPage(page + 1)}>
+        <PaginationArrowIcon/>
+      </div>
     </div>
   )
 }

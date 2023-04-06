@@ -14,9 +14,9 @@ const HeaderAbout: FC<HeaderAboutProps> = ({isBurgerActive}) => {
       <div className={styles.headerAbout}>
         <ContentWrapper>
           <div className={styles.headerAbout__content}>
-            <Contacts />
+            <Contacts/>
             <div className={styles.headerAbout__dashedUnderline}></div>
-            <List />
+            <List/>
           </div>
         </ContentWrapper>
       </div>

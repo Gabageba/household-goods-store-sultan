@@ -20,16 +20,13 @@ const Header: FC = () => {
     }
   }, [isBurgerActive])
 
-
   return (
-    <>
-      <header className={styles.header}>
-        <HeaderAbout isBurgerActive={isBurgerActive}/>
-        <div className={`underline ${styles.header__underLine}`}></div>
-        <HeaderMain burgerMenuClickHandler={burgerMenuClickHandler} isBurgerActive={isBurgerActive}/>
-        <div className={`underline ${styles.header__underLine}`}></div>
-      </header>
-    </>
+    <header className={styles.header}>
+      <HeaderAbout isBurgerActive={isBurgerActive}/>
+      <div className={`underline ${styles.header__underLine}`}></div>
+      <HeaderMain burgerMenuClickHandler={burgerMenuClickHandler} isBurgerActive={isBurgerActive}/>
+      <div className={`underline ${styles.header__underLine}`}></div>
+    </header>
 
   )
 }

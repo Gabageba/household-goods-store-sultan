@@ -3,7 +3,7 @@ import styles from './ProductCounter.module.scss'
 
 interface ProductCounterProps {
   add: () => void
-  decrease:  () => void
+  decrease: () => void
   counter: number
 }
 

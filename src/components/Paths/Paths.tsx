@@ -23,7 +23,10 @@ const Paths: FC = () => {
 
       getProduct(path).then(product => {
         if (product) {
-          setPaths(prevState => [...prevState, {link: `${COSMETICS_HYGIENE_ROUTE}/${product.barcode}`, name: product.name}])
+          setPaths(prevState => [...prevState, {
+            link: `${COSMETICS_HYGIENE_ROUTE}/${product.barcode}`,
+            name: product.name
+          }])
         }
       })
     })
@@ -39,7 +42,9 @@ const Paths: FC = () => {
             <div className={styles.path__block} key={id}>
               <div className={`dashedLineVert ${styles.path__line}`}></div>
               <Link to={path.link}
-                    className={`${styles.path__link} ${id === paths.length - 1 && styles.path__currentLink}`}>{path.name}</Link>
+                    className={`${styles.path__link} ${id === paths.length - 1 && styles.path__currentLink}`}>
+                {path.name}
+              </Link>
             </div>
           )
         }
@@ -47,7 +52,9 @@ const Paths: FC = () => {
       {
         paths && <Link to={paths.length > 2 ? paths[paths.length - 2].link : COSMETICS_HYGIENE_ROUTE}
                        className={styles.path__back}>
-          <div className={styles.path__backButton}><PaginationArrowIcon/></div>
+          <div className={styles.path__backButton}>
+            <PaginationArrowIcon/>
+          </div>
           <span>Назад</span>
         </Link>
       }

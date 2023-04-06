@@ -54,4 +54,7 @@ export const setProductsTypes = (productTypes: IProductTypes[]): ProductsAction 
   type: ProductsActionTypes.SET_PRODUCTS_TYPES,
   productTypes
 })
-export const setProductsTotalCount = (totalCount: number): ProductsAction => ({type: ProductsActionTypes.SET_PRODUCTS_TOTAL_COUNT, totalCount})
+export const setProductsTotalCount = (totalCount: number): ProductsAction => ({
+  type: ProductsActionTypes.SET_PRODUCTS_TOTAL_COUNT,
+  totalCount
+})

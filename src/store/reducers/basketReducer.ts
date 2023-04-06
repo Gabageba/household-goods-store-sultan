@@ -25,10 +25,10 @@ export const basketReducer = (state = initialState, action: BasketAction): IBask
         isLoading: action.isLoading
       }
     case BasketActionTypes.SET_BASKET_ITEMS_TOTAL_COUNT:
-    return {
-      ...state,
-      totalCount: action.totalCount
-    }
+      return {
+        ...state,
+        totalCount: action.totalCount
+      }
     default:
       return state
   }

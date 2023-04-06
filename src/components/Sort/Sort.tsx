@@ -21,12 +21,15 @@ const Sort: FC<SortProps> = ({setCurrentSort, currentSort}) => {
     <div className={styles.sort}>
       <div className={styles.sort__header}>Сортировка:</div>
       <div className={styles.sort__chooseSortType}>
-        <SortItem name={currentSort.name} handleClick={() => setIsDropDownActive(prevState => !prevState)} position={currentSort.position}/>
+        <SortItem name={currentSort.name}
+                  handleClick={() => setIsDropDownActive(prevState => !prevState)}
+                  position={currentSort.position}/>
         <div className={`${styles.dropDown} ${isDropDownActive ? styles.dropDown_active : ''}`}>
           {
             SORT_TYPES.map(type => {
               return type.id !== currentSort.id &&
-                <SortItem name={type.name} handleClick={() => handleDropDownItemClick(type)} key={type.id} position={type.position}/>
+                <SortItem name={type.name} handleClick={() => handleDropDownItemClick(type)} key={type.id}
+                          position={type.position}/>
             })
           }
         </div>

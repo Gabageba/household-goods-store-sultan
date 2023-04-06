@@ -15,7 +15,9 @@ const TypeFilter: FC<TypeFilterProps> = ({types, selectedType, setSelectedType})
       {types.map((type) => {
         const typeArr = type.name.split(' ')
         return (
-          <div className={`${styles.typeFilter__card} ${selectedType.includes(FilterTypes[type.id as keyof typeof FilterTypes]) ? styles.typeFilter__card_active: ''}`} key={type.id} onClick={() => setSelectedType(type.id)}>
+          <div
+            className={`${styles.typeFilter__card} ${selectedType.includes(FilterTypes[type.id as keyof typeof FilterTypes]) ? styles.typeFilter__card_active : ''}`}
+            key={type.id} onClick={() => setSelectedType(type.id)}>
             {typeArr[0] + ' '}
             <br/>
             {typeArr.slice(1).join(' ')}

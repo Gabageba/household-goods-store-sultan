@@ -11,9 +11,10 @@ const HiddenInfo: FC<PropsWithChildren<HiddenInfoProps>> = ({title, children}) =
 
   return (
     <div className={styles.hiddenInfo}>
-      <div className={`${styles.hiddenInfo__title} ${isVisible ? styles.hiddenInfo__title_active : ''}`} onClick={() => setIsVisible(prevState => !prevState)}>
+      <div className={`${styles.hiddenInfo__title} ${isVisible ? styles.hiddenInfo__title_active : ''}`}
+           onClick={() => setIsVisible(prevState => !prevState)}>
         <h3>{title}</h3>
-        <MoreIcon />
+        <MoreIcon/>
       </div>
 
       <div className={`${styles.hiddenInfo__content} ${isVisible ? styles.hiddenInfo__content_active : ''}`}>

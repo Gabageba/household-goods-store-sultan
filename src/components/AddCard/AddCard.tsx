@@ -138,7 +138,9 @@ const AddCard: FC<AddCardProps> = ({product, setIsEdit}) => {
                   value={description}
                   onChange={e => setDescription(e.target.value)}/>
       </div>
-      <div className={`button ${styles.addCard__button}`} onClick={product ? saveEditCardHandler : addCardHandler}>Сохранить</div>
+      <div className={`button ${styles.addCard__button}`}
+           onClick={product ? saveEditCardHandler : addCardHandler}>Сохранить
+      </div>
     </div>
   )
 }

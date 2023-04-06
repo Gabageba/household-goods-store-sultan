@@ -34,7 +34,7 @@ export const addBasketItem = (product: IProduct, count = 1) => {
         if (foundIndex || foundIndex === 0) {
           result[foundIndex].amount += count
         } else {
-          result = [...basketItems,{product, amount: count} ]
+          result = [...basketItems, {product, amount: count}]
         }
         setTotal(result, dispatch)
         localStorage.setItem(BASKET_LOCAL_STORAGE, JSON.stringify(result))

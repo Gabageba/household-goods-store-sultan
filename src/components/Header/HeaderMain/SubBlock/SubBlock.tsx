@@ -31,7 +31,7 @@ const SubBlock: FC = () => {
       <div className={styles.subBlock__basket} onClick={() => navigate(BASKET_ROUTE)}>
         <div className={styles.subBlock__basket__basketIcon}>
           <img width={46} src={basket} alt="basket"/>
-          {totalCount > 0 &&  <div className={styles.subBlock__basket_counter}>{totalCount}</div>}
+          {totalCount > 0 && <div className={styles.subBlock__basket_counter}>{totalCount}</div>}
         </div>
         <div className={styles.subBlock__price}>
           <div className={styles.subBlock__price_title}>Корзина</div>

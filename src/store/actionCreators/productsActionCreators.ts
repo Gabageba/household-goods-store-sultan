@@ -4,10 +4,7 @@ import {setProducts, setProductsIsLoading, setProductsTotalCount, setProductsTyp
 import {getProducts} from '../../api/productsApi'
 import {ISort, SortTypesName, SortTypesPosition} from '../../types/sort'
 import {FilterTypes} from '../../types/filter'
-import {BASKET_LOCAL_STORAGE, PRODUCTS_LOCAL_STORAGE} from '../../utils/consts'
-import {deleteBasketItem} from './basketActionCreators'
-import {getBasketItems} from '../../api/basketApi'
-import {setBasketItems} from '../reducers/basketReducer'
+import {PRODUCTS_LOCAL_STORAGE} from '../../utils/consts'
 
 interface filters {
   types: FilterTypes[],

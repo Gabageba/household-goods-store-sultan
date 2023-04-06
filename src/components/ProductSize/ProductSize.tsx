@@ -11,7 +11,7 @@ const ProductSize: FC<ProductSizeProps> = ({sizeType, size}) => {
   return (
     <div className={styles.productSize}>
       {sizeType === 'volume' ? <VolumeIcon/> : <WeightIcon/>}
-      <span>{ size} {sizeType === 'volume' ? 'мл' : 'г'}</span>
+      <span>{size} {sizeType === 'volume' ? 'мл' : 'г'}</span>
     </div>
   )
 }

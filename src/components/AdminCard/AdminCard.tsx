@@ -30,7 +30,7 @@ const AdminCard: FC<AdminCardProps> = ({product}) => {
       {
         isCardEdit
           ? <AddCard product={product} setIsEdit={setIsCardEdit}/>
-          :  <div className={styles.adminCard}>
+          : <div className={styles.adminCard}>
             <div className={styles.adminCard__info}>
               <img width={200} src={product.url || noImage} alt={product.brand}/>
               <div className={styles.info}>
@@ -40,7 +40,8 @@ const AdminCard: FC<AdminCardProps> = ({product}) => {
               </div>
             </div>
             <div className={styles.buttons}>
-              <div className={styles.buttons__item} ><img src={editIcon} alt="edit" onClick={() => setIsCardEdit(true)}/></div>
+              <div className={styles.buttons__item}><img src={editIcon} alt="edit" onClick={() => setIsCardEdit(true)}/>
+              </div>
               <div className={`dashedLineVert ${styles.basketCard__line}`}></div>
               <div className={styles.buttons__item} onClick={deleteItem}><img src={deleteIcon} alt="delete"/></div>
             </div>

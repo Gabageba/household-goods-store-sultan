@@ -23,7 +23,7 @@ const Admin = () => {
         <div>
           {
             products.map(product =>
-            <AdminCard product={product} key={product.id}/>
+              <AdminCard product={product} key={product.id}/>
             )
           }
         </div>
