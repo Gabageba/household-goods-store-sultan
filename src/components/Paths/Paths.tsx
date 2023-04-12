@@ -33,7 +33,7 @@ const Paths: FC = () => {
   }, [])
 
   return (
-    <div className={styles.path}>
+    <div className={styles.path} data-testid={'paths'}>
       <div className={styles.path__full}>
         <Link className={`${styles.path__link} ${!paths && styles.path__currentLink}`}
               to={COSMETICS_HYGIENE_ROUTE}>Главная</Link>

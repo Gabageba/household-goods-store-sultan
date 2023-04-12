@@ -17,6 +17,7 @@ const Types: FC<TypesProps> = ({types, setSelectedType, selectedType}) => {
         {
           types.map((type) =>
             <div key={type.id}
+                 data-testid={'type'}
                  className={`${styles.types__item} ${selectedType.includes(FilterTypes[type.id as keyof typeof FilterTypes]) ? styles.types__item_active : ''}`}
                  onClick={() => setSelectedType(type.id)}
             >

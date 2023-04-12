@@ -31,10 +31,13 @@ const Basket = () => {
   }, [isPopUpVisible])
 
   return (
-    <div className={`pageContent ${styles.basket}`}>
-      {isPopUpVisible && <OrderModalWindow setModalActive={setIsPopUpVisible}
-                                           title={'Спасибо за заказ'}
-                                           text={'Наш менеджер свяжется с вами в ближайшее время'}/>}
+    <div className={`pageContent ${styles.basket}`} data-testid={'basket-page'}>
+      {isPopUpVisible && <div  data-testid={'order-modal-window'}>
+        <OrderModalWindow setModalActive={setIsPopUpVisible}
+                          title={'Спасибо за заказ'}
+                          text={'Наш менеджер свяжется с вами в ближайшее время'}/>
+      </div>
+      }
       <ContentWrapper>
         <Paths/>
         <h1>Корзина</h1>
@@ -51,11 +54,16 @@ const Basket = () => {
                 )
               }
               <div className={styles.basket__purchase}>
-                <div className={`button ${styles.basket__button}`} onClick={purchaseClickHandler}>Оформить заказ</div>
+                <div className={`button ${styles.basket__button}`}
+                     onClick={purchaseClickHandler}
+                     data-testid="purchase-button"
+                >
+                  Оформить заказ
+                </div>
                 <div className={styles.basket__totalPrice}>{formatPrice(totalPrice)} ₸</div>
               </div>
             </div>
-            : <div className={styles.basket__notFound}>Ваша корзина пуста</div>
+            : <div className={styles.basket__notFound} data-testid={'basket empty'}>Ваша корзина пуста</div>
         }
       </ContentWrapper>
       <Footer/>

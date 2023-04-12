@@ -13,7 +13,7 @@ interface filters {
   manufacturers?: string[] | null
 }
 
-const sortProducts = (products: IProduct[], sort: ISort): IProduct[] => {
+export const sortProducts = (products: IProduct[], sort: ISort): IProduct[] => {
   let result = products
   if (sort.name === SortTypesName.name) {
     if (sort.position === SortTypesPosition.up) {
@@ -48,7 +48,7 @@ const sortProducts = (products: IProduct[], sort: ISort): IProduct[] => {
   return result
 }
 
-const filterProducts = (products: IProduct[], filters: filters): IProduct[] => {
+export const filterProducts = (products: IProduct[], filters: filters): IProduct[] => {
   let result = products
   if (filters.types?.length > 0) {
     result = result.filter(product => {

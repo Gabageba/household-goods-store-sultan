@@ -24,6 +24,7 @@ const Pagination = () => {
       {
         getPages(limit).map(pageItem =>
           <div key={pageItem}
+               data-testid={'page'}
                className={`${styles.pagination__page} ${pageItem === page ? styles.pagination__page_active : ''}`}
                onClick={() => setProductsPage(pageItem)}>
             {pageItem}

@@ -9,7 +9,9 @@ const ButtonsBlock: FC = () => {
 
   return (
     <div className={styles.buttonsBlock}>
-      <div className={`button ${styles.buttonsBlock__catalog}`} onClick={() => navigate(COSMETICS_HYGIENE_ROUTE)}>
+      <div className={`button ${styles.buttonsBlock__catalog}`}
+           data-testid={'cosmetics-hygiene-link'}
+           onClick={() => navigate(COSMETICS_HYGIENE_ROUTE)} >
         <div className={styles.buttonsBlock__content}>
           <span>Каталог</span>
           <CatalogIcon/>

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`path tests path test 1`] = `
+<div
+  class="path"
+  data-testid="paths"
+>
+  <div
+    class="path__full"
+  >
+    <a
+      class="path__link false"
+      href="/cosmeticsHygiene"
+    >
+      Главная
+    </a>
+    <div
+      class="path__block"
+    >
+      <div
+        class="dashedLineVert path__line"
+      />
+      <a
+        class="path__link path__currentLink"
+        href="/cosmeticsHygiene"
+      >
+        Косметика и гигиена
+      </a>
+    </div>
+  </div>
+  <a
+    class="path__back"
+    href="/cosmeticsHygiene"
+  >
+    <div
+      class="path__backButton"
+    >
+      <svg
+        fill="none"
+        height="16"
+        viewBox="0 0 9 16"
+        width="9"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9 2.28571L3.375 8L9 13.7143L7.875 16L2.54292e-07 8L7.875 9.83506e-08L9 2.28571Z"
+          fill="#FFC85E"
+        />
+      </svg>
+    </div>
+    <span>
+      Назад
+    </span>
+  </a>
+</div>
+`;

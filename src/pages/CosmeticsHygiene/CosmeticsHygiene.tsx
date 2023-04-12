@@ -86,7 +86,7 @@ const CosmeticsHygiene = () => {
   }
 
   return (
-    <div className={'pageContent'}>
+    <div className={'pageContent'} data-testid={'cosmetics-hygiene-page'}>
       <ContentWrapper>
         <Paths/>
         <div className={styles.cosmeticsHygiene}>

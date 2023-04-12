@@ -28,7 +28,9 @@ const SubBlock: FC = () => {
         <img width={17} src={download} alt="download"/>
       </div>
       <div className={`dashedLineVert ${styles.subBlock__line}`}></div>
-      <div className={styles.subBlock__basket} onClick={() => navigate(BASKET_ROUTE)}>
+      <div className={styles.subBlock__basket}
+           data-testid={'basket-link'}
+           onClick={() => navigate(BASKET_ROUTE)}>
         <div className={styles.subBlock__basket__basketIcon}>
           <img width={46} src={basket} alt="basket"/>
           {totalCount > 0 && <div className={styles.subBlock__basket_counter}>{totalCount}</div>}
